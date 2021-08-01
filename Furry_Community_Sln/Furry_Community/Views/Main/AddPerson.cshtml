@@ -1,0 +1,25 @@
+﻿
+@using Furry_Community.Models.DataBase;
+@using Furry_Community.Models.AddPerson;
+
+
+
+@using (Html.BeginForm("AddPersonReal", "Main"))
+{
+    <div style="color:#F7766F;">
+    <h3>Добро пожаловать, введите ваши данные</h3>
+    </div>
+    <label>Введите имя</label>
+    <input type="text" id="f" name="f">
+    <br />
+
+    <label>Введите фамилию</label>
+    <input type="text" id="s" name="s">
+    <br />
+
+    <label>Введите отчество</label>
+    <input type="text" id="p" name="p">
+    <br />
+    <input type="submit" value="Update" />
+}
+

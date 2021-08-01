@@ -1,0 +1,817 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="vitya_FurryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="all_information">
+          <Key>
+            <PropertyRef Name="id_all" />
+          </Key>
+          <Property Name="it_is_me" Type="int" Nullable="false" />
+          <Property Name="help" Type="int" />
+          <Property Name="i_found" Type="int" />
+          <Property Name="i_want_to_shelter_from_the_shelter" Type="int" />
+          <Property Name="i_have_lost" Type="int" />
+          <Property Name="id_all" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="help">
+          <Key>
+            <PropertyRef Name="ID_help" />
+          </Key>
+          <Property Name="ID_help" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="How_can_i_help" Type="varchar" MaxLength="255" />
+          <Property Name="What_help_do_I_need" Type="varchar" MaxLength="255" />
+          <Property Name="ssylka_id" Type="int" />
+        </EntityType>
+        <EntityType Name="how_to_contact_me">
+          <Key>
+            <PropertyRef Name="ID_how_to_contact_me" />
+          </Key>
+          <Property Name="ID_how_to_contact_me" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tepelhone" Type="varchar" MaxLength="30" />
+          <Property Name="email" Type="varchar" MaxLength="55" />
+        </EntityType>
+        <EntityType Name="I_found">
+          <Key>
+            <PropertyRef Name="ID_I_found" />
+          </Key>
+          <Property Name="ID_I_found" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="animal_photo" Type="varbinary(max)" />
+          <Property Name="geolocation" Type="varchar" MaxLength="150" />
+          <Property Name="information" Type="varchar" MaxLength="255" />
+          <Property Name="date_found" Type="datetime" />
+          <Property Name="ssylka_id" Type="int" />
+        </EntityType>
+        <EntityType Name="I_have_lost">
+          <Key>
+            <PropertyRef Name="ID_I_have_lost" />
+          </Key>
+          <Property Name="ID_I_have_lost" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="advertisment" Type="nvarchar" MaxLength="255" />
+          <Property Name="support" Type="varchar" MaxLength="255" />
+          <Property Name="ssylka_id" Type="int" />
+          <Property Name="photo" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="I_want_to_shelter_from_the_shelter">
+          <Key>
+            <PropertyRef Name="ID_help_animal" />
+          </Key>
+          <Property Name="ID_help_animal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_animal" Type="int" Nullable="false" />
+          <Property Name="ID_shelter" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="id_animal">
+          <Key>
+            <PropertyRef Name="ID_animal1" />
+          </Key>
+          <Property Name="ID_animal1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dogs" Type="bit" />
+          <Property Name="cats" Type="bit" />
+          <Property Name="humsters" Type="bit" />
+        </EntityType>
+        <EntityType Name="id_shelter">
+          <Key>
+            <PropertyRef Name="ID_shelter1" />
+          </Key>
+          <Property Name="ID_shelter1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_of_shelter" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Address_of_shelter" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="vid_animals" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="it_is_me">
+          <Key>
+            <PropertyRef Name="ID_I" />
+          </Key>
+          <Property Name="ID_I" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Second_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="varchar" MaxLength="50" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="ID_how_to_contact_me" Type="int" Nullable="false" />
+          <Property Name="ID_reputation" Type="int" Nullable="false" />
+          <Property Name="Parol" Type="char" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="reputation">
+          <Key>
+            <PropertyRef Name="ID_reputation" />
+          </Key>
+          <Property Name="ID_reputation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="acheivements" Type="varchar" MaxLength="100" />
+          <Property Name="id_role" Type="int" />
+        </EntityType>
+        <EntityType Name="role_love_of_animal">
+          <Key>
+            <PropertyRef Name="ID_role" />
+          </Key>
+          <Property Name="ID_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dogs" Type="bit" />
+          <Property Name="cats" Type="bit" />
+          <Property Name="humsters" Type="bit" />
+        </EntityType>
+        <EntityType Name="SsylkaNaVideo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="SsylkaNaYouTube" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_help_to_main_table">
+          <End Role="help" Type="Self.help" Multiplicity="0..1" />
+          <End Role="all_information" Type="Self.all_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="help">
+              <PropertyRef Name="ID_help" />
+            </Principal>
+            <Dependent Role="all_information">
+              <PropertyRef Name="help" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_how_to_Contact_telephone_or_email">
+          <End Role="how_to_contact_me" Type="Self.how_to_contact_me" Multiplicity="1" />
+          <End Role="it_is_me" Type="Self.it_is_me" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="how_to_contact_me">
+              <PropertyRef Name="ID_how_to_contact_me" />
+            </Principal>
+            <Dependent Role="it_is_me">
+              <PropertyRef Name="ID_how_to_contact_me" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_found_main_table">
+          <End Role="I_found" Type="Self.I_found" Multiplicity="0..1" />
+          <End Role="all_information" Type="Self.all_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_found">
+              <PropertyRef Name="ID_I_found" />
+            </Principal>
+            <Dependent Role="all_information">
+              <PropertyRef Name="i_found" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_i_have_lost_to_maint_table">
+          <End Role="I_have_lost" Type="Self.I_have_lost" Multiplicity="0..1" />
+          <End Role="all_information" Type="Self.all_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_have_lost">
+              <PropertyRef Name="ID_I_have_lost" />
+            </Principal>
+            <Dependent Role="all_information">
+              <PropertyRef Name="i_have_lost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_want_to_shelter">
+          <End Role="I_want_to_shelter_from_the_shelter" Type="Self.I_want_to_shelter_from_the_shelter" Multiplicity="0..1" />
+          <End Role="all_information" Type="Self.all_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_want_to_shelter_from_the_shelter">
+              <PropertyRef Name="ID_help_animal" />
+            </Principal>
+            <Dependent Role="all_information">
+              <PropertyRef Name="i_want_to_shelter_from_the_shelter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_animal">
+          <End Role="id_animal" Type="Self.id_animal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_want_to_shelter_from_the_shelter" Type="Self.I_want_to_shelter_from_the_shelter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="id_animal">
+              <PropertyRef Name="ID_animal1" />
+            </Principal>
+            <Dependent Role="I_want_to_shelter_from_the_shelter">
+              <PropertyRef Name="ID_animal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_shelter">
+          <End Role="id_shelter" Type="Self.id_shelter" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_want_to_shelter_from_the_shelter" Type="Self.I_want_to_shelter_from_the_shelter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="id_shelter">
+              <PropertyRef Name="ID_shelter1" />
+            </Principal>
+            <Dependent Role="I_want_to_shelter_from_the_shelter">
+              <PropertyRef Name="ID_shelter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_it_is_me">
+          <End Role="it_is_me" Type="Self.it_is_me" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="all_information" Type="Self.all_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="it_is_me">
+              <PropertyRef Name="ID_I" />
+            </Principal>
+            <Dependent Role="all_information">
+              <PropertyRef Name="it_is_me" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_reputation">
+          <End Role="reputation" Type="Self.reputation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="it_is_me" Type="Self.it_is_me" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reputation">
+              <PropertyRef Name="ID_reputation" />
+            </Principal>
+            <Dependent Role="it_is_me">
+              <PropertyRef Name="ID_reputation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_role">
+          <End Role="role_love_of_animal" Type="Self.role_love_of_animal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="reputation" Type="Self.reputation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role_love_of_animal">
+              <PropertyRef Name="ID_role" />
+            </Principal>
+            <Dependent Role="reputation">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="vitya_FurryModelStoreContainer">
+          <EntitySet Name="all_information" EntityType="Self.all_information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="help" EntityType="Self.help" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="how_to_contact_me" EntityType="Self.how_to_contact_me" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_found" EntityType="Self.I_found" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_have_lost" EntityType="Self.I_have_lost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="I_want_to_shelter_from_the_shelter" EntityType="Self.I_want_to_shelter_from_the_shelter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="id_animal" EntityType="Self.id_animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="id_shelter" EntityType="Self.id_shelter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="it_is_me" EntityType="Self.it_is_me" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reputation" EntityType="Self.reputation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role_love_of_animal" EntityType="Self.role_love_of_animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SsylkaNaVideo" EntityType="Self.SsylkaNaVideo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_help_to_main_table" Association="Self.FK_help_to_main_table">
+            <End Role="help" EntitySet="help" />
+            <End Role="all_information" EntitySet="all_information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_how_to_Contact_telephone_or_email" Association="Self.FK_how_to_Contact_telephone_or_email">
+            <End Role="how_to_contact_me" EntitySet="how_to_contact_me" />
+            <End Role="it_is_me" EntitySet="it_is_me" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_found_main_table" Association="Self.FK_I_found_main_table">
+            <End Role="I_found" EntitySet="I_found" />
+            <End Role="all_information" EntitySet="all_information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_i_have_lost_to_maint_table" Association="Self.FK_i_have_lost_to_maint_table">
+            <End Role="I_have_lost" EntitySet="I_have_lost" />
+            <End Role="all_information" EntitySet="all_information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_want_to_shelter" Association="Self.FK_I_want_to_shelter">
+            <End Role="I_want_to_shelter_from_the_shelter" EntitySet="I_want_to_shelter_from_the_shelter" />
+            <End Role="all_information" EntitySet="all_information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_animal" Association="Self.FK_ID_animal">
+            <End Role="id_animal" EntitySet="id_animal" />
+            <End Role="I_want_to_shelter_from_the_shelter" EntitySet="I_want_to_shelter_from_the_shelter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_shelter" Association="Self.FK_ID_shelter">
+            <End Role="id_shelter" EntitySet="id_shelter" />
+            <End Role="I_want_to_shelter_from_the_shelter" EntitySet="I_want_to_shelter_from_the_shelter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_it_is_me" Association="Self.FK_it_is_me">
+            <End Role="it_is_me" EntitySet="it_is_me" />
+            <End Role="all_information" EntitySet="all_information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reputation" Association="Self.FK_reputation">
+            <End Role="reputation" EntitySet="reputation" />
+            <End Role="it_is_me" EntitySet="it_is_me" />
+          </AssociationSet>
+          <AssociationSet Name="FK_role" Association="Self.FK_role">
+            <End Role="role_love_of_animal" EntitySet="role_love_of_animal" />
+            <End Role="reputation" EntitySet="reputation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="vitya_FurryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="all_information">
+          <Key>
+            <PropertyRef Name="id_all" />
+          </Key>
+          <Property Name="it_is_me" Type="Int32" Nullable="false" />
+          <Property Name="help" Type="Int32" />
+          <Property Name="i_found" Type="Int32" />
+          <Property Name="i_want_to_shelter_from_the_shelter" Type="Int32" />
+          <Property Name="i_have_lost" Type="Int32" />
+          <Property Name="id_all" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="help1" Relationship="Self.FK_help_to_main_table" FromRole="all_information" ToRole="help" />
+          <NavigationProperty Name="I_found1" Relationship="Self.FK_I_found_main_table" FromRole="all_information" ToRole="I_found" />
+          <NavigationProperty Name="I_have_lost1" Relationship="Self.FK_i_have_lost_to_maint_table" FromRole="all_information" ToRole="I_have_lost" />
+          <NavigationProperty Name="I_want_to_shelter_from_the_shelter1" Relationship="Self.FK_I_want_to_shelter" FromRole="all_information" ToRole="I_want_to_shelter_from_the_shelter" />
+          <NavigationProperty Name="it_is_me1" Relationship="Self.FK_it_is_me" FromRole="all_information" ToRole="it_is_me" />
+        </EntityType>
+        <EntityType Name="help">
+          <Key>
+            <PropertyRef Name="ID_help" />
+          </Key>
+          <Property Name="ID_help" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="How_can_i_help" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="What_help_do_I_need" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ssylka_id" Type="Int32" />
+          <NavigationProperty Name="all_information" Relationship="Self.FK_help_to_main_table" FromRole="help" ToRole="all_information" />
+        </EntityType>
+        <EntityType Name="how_to_contact_me">
+          <Key>
+            <PropertyRef Name="ID_how_to_contact_me" />
+          </Key>
+          <Property Name="ID_how_to_contact_me" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tepelhone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="it_is_me" Relationship="Self.FK_how_to_Contact_telephone_or_email" FromRole="how_to_contact_me" ToRole="it_is_me" />
+        </EntityType>
+        <EntityType Name="I_found">
+          <Key>
+            <PropertyRef Name="ID_I_found" />
+          </Key>
+          <Property Name="ID_I_found" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="animal_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="geolocation" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="information" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="date_found" Type="DateTime" Precision="3" />
+          <Property Name="ssylka_id" Type="Int32" />
+          <NavigationProperty Name="all_information" Relationship="Self.FK_I_found_main_table" FromRole="I_found" ToRole="all_information" />
+        </EntityType>
+        <EntityType Name="I_have_lost">
+          <Key>
+            <PropertyRef Name="ID_I_have_lost" />
+          </Key>
+          <Property Name="ID_I_have_lost" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="advertisment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="support" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ssylka_id" Type="Int32" />
+          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="all_information" Relationship="Self.FK_i_have_lost_to_maint_table" FromRole="I_have_lost" ToRole="all_information" />
+        </EntityType>
+        <EntityType Name="I_want_to_shelter_from_the_shelter">
+          <Key>
+            <PropertyRef Name="ID_help_animal" />
+          </Key>
+          <Property Name="ID_help_animal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_animal" Type="Int32" Nullable="false" />
+          <Property Name="ID_shelter" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="all_information" Relationship="Self.FK_I_want_to_shelter" FromRole="I_want_to_shelter_from_the_shelter" ToRole="all_information" />
+          <NavigationProperty Name="id_animal1" Relationship="Self.FK_ID_animal" FromRole="I_want_to_shelter_from_the_shelter" ToRole="id_animal" />
+          <NavigationProperty Name="id_shelter1" Relationship="Self.FK_ID_shelter" FromRole="I_want_to_shelter_from_the_shelter" ToRole="id_shelter" />
+        </EntityType>
+        <EntityType Name="id_animal">
+          <Key>
+            <PropertyRef Name="ID_animal1" />
+          </Key>
+          <Property Name="ID_animal1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dogs" Type="Boolean" />
+          <Property Name="cats" Type="Boolean" />
+          <Property Name="humsters" Type="Boolean" />
+          <NavigationProperty Name="I_want_to_shelter_from_the_shelter" Relationship="Self.FK_ID_animal" FromRole="id_animal" ToRole="I_want_to_shelter_from_the_shelter" />
+        </EntityType>
+        <EntityType Name="id_shelter">
+          <Key>
+            <PropertyRef Name="ID_shelter1" />
+          </Key>
+          <Property Name="ID_shelter1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_of_shelter" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address_of_shelter" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vid_animals" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="I_want_to_shelter_from_the_shelter" Relationship="Self.FK_ID_shelter" FromRole="id_shelter" ToRole="I_want_to_shelter_from_the_shelter" />
+        </EntityType>
+        <EntityType Name="it_is_me">
+          <Key>
+            <PropertyRef Name="ID_I" />
+          </Key>
+          <Property Name="ID_I" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Second_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ID_how_to_contact_me" Type="Int32" Nullable="false" />
+          <Property Name="ID_reputation" Type="Int32" Nullable="false" />
+          <Property Name="Parol" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="all_information" Relationship="Self.FK_it_is_me" FromRole="it_is_me" ToRole="all_information" />
+          <NavigationProperty Name="how_to_contact_me" Relationship="Self.FK_how_to_Contact_telephone_or_email" FromRole="it_is_me" ToRole="how_to_contact_me" />
+          <NavigationProperty Name="reputation" Relationship="Self.FK_reputation" FromRole="it_is_me" ToRole="reputation" />
+        </EntityType>
+        <EntityType Name="reputation">
+          <Key>
+            <PropertyRef Name="ID_reputation" />
+          </Key>
+          <Property Name="ID_reputation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="acheivements" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_role" Type="Int32" />
+          <NavigationProperty Name="it_is_me" Relationship="Self.FK_reputation" FromRole="reputation" ToRole="it_is_me" />
+          <NavigationProperty Name="role_love_of_animal" Relationship="Self.FK_role" FromRole="reputation" ToRole="role_love_of_animal" />
+        </EntityType>
+        <EntityType Name="role_love_of_animal">
+          <Key>
+            <PropertyRef Name="ID_role" />
+          </Key>
+          <Property Name="ID_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dogs" Type="Boolean" />
+          <Property Name="cats" Type="Boolean" />
+          <Property Name="humsters" Type="Boolean" />
+          <NavigationProperty Name="reputation" Relationship="Self.FK_role" FromRole="role_love_of_animal" ToRole="reputation" />
+        </EntityType>
+        <EntityType Name="SsylkaNaVideo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="SsylkaNaYouTube" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_help_to_main_table">
+          <End Role="help" Type="Self.help" Multiplicity="0..1" />
+          <End Role="all_information" Type="Self.all_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="help">
+              <PropertyRef Name="ID_help" />
+            </Principal>
+            <Dependent Role="all_information">
+              <PropertyRef Name="help" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_found_main_table">
+          <End Role="I_found" Type="Self.I_found" Multiplicity="0..1" />
+          <End Role="all_information" Type="Self.all_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_found">
+              <PropertyRef Name="ID_I_found" />
+            </Principal>
+            <Dependent Role="all_information">
+              <PropertyRef Name="i_found" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_i_have_lost_to_maint_table">
+          <End Role="I_have_lost" Type="Self.I_have_lost" Multiplicity="0..1" />
+          <End Role="all_information" Type="Self.all_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_have_lost">
+              <PropertyRef Name="ID_I_have_lost" />
+            </Principal>
+            <Dependent Role="all_information">
+              <PropertyRef Name="i_have_lost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_I_want_to_shelter">
+          <End Role="I_want_to_shelter_from_the_shelter" Type="Self.I_want_to_shelter_from_the_shelter" Multiplicity="0..1" />
+          <End Role="all_information" Type="Self.all_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="I_want_to_shelter_from_the_shelter">
+              <PropertyRef Name="ID_help_animal" />
+            </Principal>
+            <Dependent Role="all_information">
+              <PropertyRef Name="i_want_to_shelter_from_the_shelter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_it_is_me">
+          <End Role="it_is_me" Type="Self.it_is_me" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="all_information" Type="Self.all_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="it_is_me">
+              <PropertyRef Name="ID_I" />
+            </Principal>
+            <Dependent Role="all_information">
+              <PropertyRef Name="it_is_me" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_how_to_Contact_telephone_or_email">
+          <End Role="how_to_contact_me" Type="Self.how_to_contact_me" Multiplicity="1" />
+          <End Role="it_is_me" Type="Self.it_is_me" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="how_to_contact_me">
+              <PropertyRef Name="ID_how_to_contact_me" />
+            </Principal>
+            <Dependent Role="it_is_me">
+              <PropertyRef Name="ID_how_to_contact_me" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_animal">
+          <End Role="id_animal" Type="Self.id_animal" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_want_to_shelter_from_the_shelter" Type="Self.I_want_to_shelter_from_the_shelter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="id_animal">
+              <PropertyRef Name="ID_animal1" />
+            </Principal>
+            <Dependent Role="I_want_to_shelter_from_the_shelter">
+              <PropertyRef Name="ID_animal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ID_shelter">
+          <End Role="id_shelter" Type="Self.id_shelter" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="I_want_to_shelter_from_the_shelter" Type="Self.I_want_to_shelter_from_the_shelter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="id_shelter">
+              <PropertyRef Name="ID_shelter1" />
+            </Principal>
+            <Dependent Role="I_want_to_shelter_from_the_shelter">
+              <PropertyRef Name="ID_shelter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_reputation">
+          <End Role="reputation" Type="Self.reputation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="it_is_me" Type="Self.it_is_me" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reputation">
+              <PropertyRef Name="ID_reputation" />
+            </Principal>
+            <Dependent Role="it_is_me">
+              <PropertyRef Name="ID_reputation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_role">
+          <End Role="role_love_of_animal" Type="Self.role_love_of_animal" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="reputation" Type="Self.reputation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role_love_of_animal">
+              <PropertyRef Name="ID_role" />
+            </Principal>
+            <Dependent Role="reputation">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="vitya_FurryEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="all_information" EntityType="Self.all_information" />
+          <EntitySet Name="help" EntityType="Self.help" />
+          <EntitySet Name="how_to_contact_me" EntityType="Self.how_to_contact_me" />
+          <EntitySet Name="I_found" EntityType="Self.I_found" />
+          <EntitySet Name="I_have_lost" EntityType="Self.I_have_lost" />
+          <EntitySet Name="I_want_to_shelter_from_the_shelter" EntityType="Self.I_want_to_shelter_from_the_shelter" />
+          <EntitySet Name="id_animal" EntityType="Self.id_animal" />
+          <EntitySet Name="id_shelter" EntityType="Self.id_shelter" />
+          <EntitySet Name="it_is_me" EntityType="Self.it_is_me" />
+          <EntitySet Name="reputation" EntityType="Self.reputation" />
+          <EntitySet Name="role_love_of_animal" EntityType="Self.role_love_of_animal" />
+          <EntitySet Name="SsylkaNaVideo" EntityType="Self.SsylkaNaVideo" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_help_to_main_table" Association="Self.FK_help_to_main_table">
+            <End Role="help" EntitySet="help" />
+            <End Role="all_information" EntitySet="all_information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_found_main_table" Association="Self.FK_I_found_main_table">
+            <End Role="I_found" EntitySet="I_found" />
+            <End Role="all_information" EntitySet="all_information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_i_have_lost_to_maint_table" Association="Self.FK_i_have_lost_to_maint_table">
+            <End Role="I_have_lost" EntitySet="I_have_lost" />
+            <End Role="all_information" EntitySet="all_information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_I_want_to_shelter" Association="Self.FK_I_want_to_shelter">
+            <End Role="I_want_to_shelter_from_the_shelter" EntitySet="I_want_to_shelter_from_the_shelter" />
+            <End Role="all_information" EntitySet="all_information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_it_is_me" Association="Self.FK_it_is_me">
+            <End Role="it_is_me" EntitySet="it_is_me" />
+            <End Role="all_information" EntitySet="all_information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_how_to_Contact_telephone_or_email" Association="Self.FK_how_to_Contact_telephone_or_email">
+            <End Role="how_to_contact_me" EntitySet="how_to_contact_me" />
+            <End Role="it_is_me" EntitySet="it_is_me" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_animal" Association="Self.FK_ID_animal">
+            <End Role="id_animal" EntitySet="id_animal" />
+            <End Role="I_want_to_shelter_from_the_shelter" EntitySet="I_want_to_shelter_from_the_shelter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ID_shelter" Association="Self.FK_ID_shelter">
+            <End Role="id_shelter" EntitySet="id_shelter" />
+            <End Role="I_want_to_shelter_from_the_shelter" EntitySet="I_want_to_shelter_from_the_shelter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_reputation" Association="Self.FK_reputation">
+            <End Role="reputation" EntitySet="reputation" />
+            <End Role="it_is_me" EntitySet="it_is_me" />
+          </AssociationSet>
+          <AssociationSet Name="FK_role" Association="Self.FK_role">
+            <End Role="role_love_of_animal" EntitySet="role_love_of_animal" />
+            <End Role="reputation" EntitySet="reputation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="vitya_FurryModelStoreContainer" CdmEntityContainer="vitya_FurryEntities1">
+          <EntitySetMapping Name="all_information">
+            <EntityTypeMapping TypeName="vitya_FurryModel.all_information">
+              <MappingFragment StoreEntitySet="all_information">
+                <ScalarProperty Name="it_is_me" ColumnName="it_is_me" />
+                <ScalarProperty Name="help" ColumnName="help" />
+                <ScalarProperty Name="i_found" ColumnName="i_found" />
+                <ScalarProperty Name="i_want_to_shelter_from_the_shelter" ColumnName="i_want_to_shelter_from_the_shelter" />
+                <ScalarProperty Name="i_have_lost" ColumnName="i_have_lost" />
+                <ScalarProperty Name="id_all" ColumnName="id_all" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="help">
+            <EntityTypeMapping TypeName="vitya_FurryModel.help">
+              <MappingFragment StoreEntitySet="help">
+                <ScalarProperty Name="ID_help" ColumnName="ID_help" />
+                <ScalarProperty Name="How_can_i_help" ColumnName="How_can_i_help" />
+                <ScalarProperty Name="What_help_do_I_need" ColumnName="What_help_do_I_need" />
+                <ScalarProperty Name="ssylka_id" ColumnName="ssylka_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="how_to_contact_me">
+            <EntityTypeMapping TypeName="vitya_FurryModel.how_to_contact_me">
+              <MappingFragment StoreEntitySet="how_to_contact_me">
+                <ScalarProperty Name="ID_how_to_contact_me" ColumnName="ID_how_to_contact_me" />
+                <ScalarProperty Name="tepelhone" ColumnName="tepelhone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_found">
+            <EntityTypeMapping TypeName="vitya_FurryModel.I_found">
+              <MappingFragment StoreEntitySet="I_found">
+                <ScalarProperty Name="ID_I_found" ColumnName="ID_I_found" />
+                <ScalarProperty Name="animal_photo" ColumnName="animal_photo" />
+                <ScalarProperty Name="geolocation" ColumnName="geolocation" />
+                <ScalarProperty Name="information" ColumnName="information" />
+                <ScalarProperty Name="date_found" ColumnName="date_found" />
+                <ScalarProperty Name="ssylka_id" ColumnName="ssylka_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_have_lost">
+            <EntityTypeMapping TypeName="vitya_FurryModel.I_have_lost">
+              <MappingFragment StoreEntitySet="I_have_lost">
+                <ScalarProperty Name="ID_I_have_lost" ColumnName="ID_I_have_lost" />
+                <ScalarProperty Name="advertisment" ColumnName="advertisment" />
+                <ScalarProperty Name="support" ColumnName="support" />
+                <ScalarProperty Name="ssylka_id" ColumnName="ssylka_id" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="I_want_to_shelter_from_the_shelter">
+            <EntityTypeMapping TypeName="vitya_FurryModel.I_want_to_shelter_from_the_shelter">
+              <MappingFragment StoreEntitySet="I_want_to_shelter_from_the_shelter">
+                <ScalarProperty Name="ID_help_animal" ColumnName="ID_help_animal" />
+                <ScalarProperty Name="ID_animal" ColumnName="ID_animal" />
+                <ScalarProperty Name="ID_shelter" ColumnName="ID_shelter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="id_animal">
+            <EntityTypeMapping TypeName="vitya_FurryModel.id_animal">
+              <MappingFragment StoreEntitySet="id_animal">
+                <ScalarProperty Name="ID_animal1" ColumnName="ID_animal1" />
+                <ScalarProperty Name="dogs" ColumnName="dogs" />
+                <ScalarProperty Name="cats" ColumnName="cats" />
+                <ScalarProperty Name="humsters" ColumnName="humsters" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="id_shelter">
+            <EntityTypeMapping TypeName="vitya_FurryModel.id_shelter">
+              <MappingFragment StoreEntitySet="id_shelter">
+                <ScalarProperty Name="ID_shelter1" ColumnName="ID_shelter1" />
+                <ScalarProperty Name="Name_of_shelter" ColumnName="Name_of_shelter" />
+                <ScalarProperty Name="Address_of_shelter" ColumnName="Address_of_shelter" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="vid_animals" ColumnName="vid_animals" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="it_is_me">
+            <EntityTypeMapping TypeName="vitya_FurryModel.it_is_me">
+              <MappingFragment StoreEntitySet="it_is_me">
+                <ScalarProperty Name="ID_I" ColumnName="ID_I" />
+                <ScalarProperty Name="First_name" ColumnName="First_name" />
+                <ScalarProperty Name="Second_name" ColumnName="Second_name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="ID_how_to_contact_me" ColumnName="ID_how_to_contact_me" />
+                <ScalarProperty Name="ID_reputation" ColumnName="ID_reputation" />
+                <ScalarProperty Name="Parol" ColumnName="Parol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reputation">
+            <EntityTypeMapping TypeName="vitya_FurryModel.reputation">
+              <MappingFragment StoreEntitySet="reputation">
+                <ScalarProperty Name="ID_reputation" ColumnName="ID_reputation" />
+                <ScalarProperty Name="acheivements" ColumnName="acheivements" />
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role_love_of_animal">
+            <EntityTypeMapping TypeName="vitya_FurryModel.role_love_of_animal">
+              <MappingFragment StoreEntitySet="role_love_of_animal">
+                <ScalarProperty Name="ID_role" ColumnName="ID_role" />
+                <ScalarProperty Name="dogs" ColumnName="dogs" />
+                <ScalarProperty Name="cats" ColumnName="cats" />
+                <ScalarProperty Name="humsters" ColumnName="humsters" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SsylkaNaVideo">
+            <EntityTypeMapping TypeName="vitya_FurryModel.SsylkaNaVideo">
+              <MappingFragment StoreEntitySet="SsylkaNaVideo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="SsylkaNaYouTube" ColumnName="SsylkaNaYouTube" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="vitya_FurryModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,95 @@
+﻿
+<style>
+    TD, TH {
+        padding: 3px;
+        border: 1px solid maroon;
+        text-align: left;
+    }
+</style>
+<div class="admin">
+<div>
+    <h1>Все Приюты</h1>
+</div>
+<div>
+    <table style="background-color:#E4F0CF; border: 2px solid #000000;  border-collapse: collapse; ">
+        <thead style="background-color:#7CFDCC;">
+            <tr>
+                <td>ID</td>   <td>Название приюта</td>   <td>Адрес приюта</td>   <td>Телефон</td>   <td>Тип животных в приюте</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{ 
+                foreach(Furry_Community.Models.DataBase.id_shelter x in (IEnumerable<Furry_Community.Models.DataBase.id_shelter>)ViewData["adminShelters"])
+                {
+                    <tr>
+                        <td>@x.ID_shelter1</td>   <td>@x.Name_of_shelter</td>   <td>@x.Address_of_shelter</td>   <td>@x.Telephone</td>   <td>@x.vid_animals</td>
+                    </tr>
+                }
+             }
+        </tbody>
+
+    </table>
+</div>
+<div>
+    <h1>Удалить стркоку приюта</h1>
+    <label>Введите id строки приюта, которую хотите удалить</label><br />
+    @using (Html.BeginForm("Delete_Priut_Administration","Main"))
+    {
+        <input type="number" id="num_del_id" name="num_del_id"/><br />
+        <input type="submit" value="удалить"><br />
+    }
+</div>
+
+
+<div>
+    <h1>Что бы добавить данные:</h1>
+    @using (Html.BeginForm("Add_Priut_Administration", "Main"))
+    {
+        
+
+        <label>Имя приюта:</label><br />
+        <input type="text" id="name" name="name" /><br />
+
+
+        <label>Адрес приюта:</label><br />
+        <input type="text" id="adress" name="adress"><br />
+
+        <label>Телефон:</label><br /><br />
+        <input type="text" id="tel" name="tel"><br />
+
+        <label>Вид животного</label><br />
+        <input type="text" id="vid" name="vid"><br />
+
+
+        <input type="submit" value="добавить"><br />
+    }
+</div>
+
+
+<div>
+    <h1>Изменить данные:</h1>
+    <h3>Введи только те данные, которые собираешься изменить</h3>
+    @using (Html.BeginForm("Update_Priut_Administration", "Main"))
+    {
+        <label>Обязательно введи ID приюта, которого будешь редактировть</label><br />
+        <input type="number" id="id" name="id"><br />
+        <label>Имя приюта:</label><br />
+        <input type="text" id="name" name="name" /><br />
+
+
+        <label>Адрес приюта:</label><br />
+        <input type="text" id="adress" name="adress"><br />
+
+        <label>Телефон:</label><br />
+        <input type="text" id="tel" name="tel"><br />
+
+        <label>Вид животного</label><br />
+        <input type="text" id="vid" name="vid"><br />
+
+
+        <input type="submit" value="изменить"><br />
+    }
+</div>
+</div>
+
+

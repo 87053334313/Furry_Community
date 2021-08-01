@@ -1,0 +1,10 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Philosopher&family=Roboto:wght@100&family=Spectral+SC:wght@200&display=swap');
+.admin h1 {
+    font-family: 'Philosopher', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Spectral SC', serif;
+    color: #FD0022;
+    background-color: #CBEFFD;
+    border: 3px dashed black;
+}
+ 

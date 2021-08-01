@@ -1,0 +1,58 @@
+﻿@model Furry_Community.Models.PoiskPoId.PoiskIDClass
+    <div> 
+        <h1>Страница поиска по ID</h1>
+        <br/>
+        <label>Введите ID интересующего пользователя</label>
+        <br/>
+        @using (Html.BeginForm("Poisk_Po_Id","Main"))
+        {
+        <input type="number" id="id" name="id">
+        <br/>
+        <input type="submit" value="искать">
+        }
+        <br/>
+        @{ 
+            if(Model is null)
+            {
+                if (ViewBag.net_takogo is null)
+                {
+
+                }
+                else
+                {
+                    <h2>@ViewBag.net_takogo</h2>
+                }
+            }
+            else
+            {
+                <table style="width:100%;">
+                    <thead>
+                    <tr>
+                        <th>Имя</th>    <th>Фамилия</th>    <th>Отчество</th>   <th>Фото</th>   <th>Телефон </th>   <th>Email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                        <td>@Model.me_names.First_name</td>   <td>@Model.me_names.Second_name</td>   <td>@Model.me_names.Patronymic</td>   <td>
+    @{if (Model.me_names.Photo is null)
+        {
+            <i>нет фото</i>
+        }
+        else
+        {
+            var base64 = Convert.ToBase64String(Model.me_names.Photo);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+            <img src="@imgSrc" style="width:190px;height:190px;">
+        }}
+                    </td> 
+                           
+                           
+                           <td>@Model.me_telephone.tepelhone</td>   <td>@Model.me_telephone.email</td>
+                       </tr>
+                    </tbody>
+                </table>
+            }
+        }
+    </div>
+   

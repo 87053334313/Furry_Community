@@ -1,0 +1,30 @@
+﻿@model Furry_Community.Models.DataBase.help
+
+@{
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+
+@if (ViewData["newHelp"] != null)
+{
+    <p>Текущие данные с учетом обновления:</p>
+}
+
+        <div>
+            <h2>Твои данные</h2>
+            <label>Как я могу помочь</label>
+    <p>@Model.How_can_i_help</p>
+    <br />
+    <br />
+    <label>
+        Что за помощь мне нужна:
+    </label>
+    <p>@Model.What_help_do_I_need</p>
+    </div>
+    <div>
+        @using (Html.BeginForm("Help_Text_Redact", "Main"))
+        {
+            <label>Редактировать</label>
+            <input type="submit" value="редактировать">
+        }
+    </div>

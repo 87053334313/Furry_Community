@@ -1,0 +1,63 @@
+﻿
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Lobster&display=swap');
+body {
+    background-color: #ECDAFD;
+}
+#div-index {
+    font-family: 'Lobster', cursive;
+    color: #DC0D0D;
+}
+#div-index-vlozh {
+    font-family: 'EB Garamond', serif;
+    font-family: 'Lobster', cursive;
+    color: #0D2FDC;
+}
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=EB+Garamond:wght@700&family=Lobster&display=swap');
+#div-layout-list {
+    font-family: 'Comfortaa', cursive;
+    font-family: 'EB Garamond', serif;
+    font-family: 'Lobster', cursive;
+}
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Source+Code+Pro:wght@700&family=Viaoda+Libre&display=swap');
+.lol {
+    font-family: 'Pacifico', cursive;
+    font-family: 'Source Code Pro', monospace;
+    font-family: 'Viaoda Libre', cursive;
+    color: #1811DC;
+}
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+#vvod-k-profilu {
+    font-family: 'Pacifico', cursive;
+    color: #FD2D30;
+}
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Pacifico&display=swap');
+.menu_admina {
+   
+    font-family: 'Amatic SC', cursive;
+    font-family: 'Pacifico', cursive;
+    color: #FD0F76;
+}
+
+table {
+    border: 3px solid black;
+    border-collapse: collapse;
+}
+th {
+    text-align: left;
+    background: #94F07F; 
+    padding: 5px;
+    border: 1px solid black;
+}
+
+td {
+    padding: 5px; 
+    border: 1px solid black;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+h2 {
+    font-family: 'Dela Gothic One', cursive;
+}
+

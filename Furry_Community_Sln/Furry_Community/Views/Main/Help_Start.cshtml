@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+
+    <div>
+        <h1>Это страница помощи</h1>
+
+
+    </div>
+<div>
+  
+    <ul class="help-a-start">
+        <li>
+            @Html.ActionLink("Помощь", "Help_text", "Main")
+        </li>
+        <li>
+            @Html.ActionLink("Я нашел пушитого потеряшку","Help_I_Found","Main")
+        </li>
+        <li>
+            @Html.ActionLink("Я потерял свеого пушистого друга","Help_I_Lost","Main")
+        </li>
+    </ul>
+
+</div>

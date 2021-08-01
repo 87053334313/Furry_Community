@@ -1,0 +1,44 @@
+﻿@{ 
+    Layout = null;
+}
+
+<!Doctype html>
+<html>
+    <head>
+        <title>Регистрация</title>
+        <link href="~/Content/StyleSheet_Main.css" rel="stylesheet">
+    </head>
+    <body>
+      <div class="lol">
+                <div>
+                    <h1 style="text-align:center;">Регистрация</h1>
+                </div>
+                @using (Html.BeginForm("AddFromFullRegistration", "Main"))
+                {
+            <div>
+                <label>Введите имя</label>
+                <input type="text" name="fname" id="fname" placeholder="Иван" required="required"  />
+
+                <br />
+                <label>Введите фамилию</label>
+                <input type="text" name="sname" id="sname" placeholder="Иванин" required="required" >
+
+                <br />
+                <label>Введите отчество</label>
+                <input type="text" name="tname" id="tname" placeholder="Иванович" required="required" >
+                <br />
+                <label>Введите пароль</label>
+                <input type="text" name="parol" id="parol" required="required" >
+                <br />
+                <label>Введите номер телефона начиная с <i>8</i></label>
+                <input type="tel" name="tel" id="tel" pattern="8[0-9]{10}" placeholder="89932188786" required="required">
+                <br />
+                <label>Введите email</label>
+                <input type="email" name="email" id="email" placeholder="primer&#64;mail.ru" required="required"  />
+                <br />
+                <input type="submit" value="Добавить" />
+            </div>
+                }
+      </div>
+    </body>
+</html>

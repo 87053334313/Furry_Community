@@ -1,0 +1,69 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>YourMenu</title>
+    <link rel="stylesheet" href="~/Content/StyleSheet.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/StyleSheet_Vnutreniy.css"> 
+
+    <style>
+        #mymenuu {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    </style>
+</head> 
+<body>
+    <div class="fon">
+        <div> 
+            @RenderBody()
+        </div>
+        <div id="div-lyout2-niz">
+            <h1 id="mymenuu" style="margin-top:20px; text-align:center; border: 2px solid black; border-radius:30%; background-color:#D4DDDD; margin-bottom:70px;">Меню</h1>
+            <div id="menushka" class="menu-2" style="background-color:#47F0EA;border:5px solid #838996; margin-top:-50px;">
+            <ul id="listik" style="list-style:none; padding:0px;" >
+ 
+                    <li>@Html.ActionLink("На стартовую страницу профиля", "StartProfil_PoId", "Main")</li>
+                    <li>
+                        @Html.ActionLink("Перейти в категорию помощи", "Help_Start", "Main")
+                    </li>
+                    <li>@Html.ActionLink("Приюты с которыми мы сотрудничаем", "AllShelters_Page", "Shelter")</li>
+                    <li>@Html.ActionLink("Добавить ссылку на видео из ютуба", "AddSsylkaNaYouTube", "Main")</li>
+                    <li>@Html.ActionLink("Выход", "Index", "Main")</li>
+ 
+            </ul>
+            </div>
+            </div>
+        </div>
+
+    <script>
+      
+
+
+
+        var menu_niz = document.getElementById("menushka");
+        var listik = document.getElementById("listik");
+        var b = true;
+        menu_niz.style.display = "none";
+        function LOL() {
+            if (b === true) {
+                b = false;
+                menu_niz.style.display = "none";
+
+            }
+            else {
+                b = true;
+                menu_niz.style.display = "block";
+            }
+        }
+
+       
+        var el = document.getElementById("mymenuu");
+        el.addEventListener("click", LOL);
+    </script>
+
+  
+</body>
+</html>

@@ -1,0 +1,119 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+<style>
+    table {
+        border: 3px solid black;
+        border-collapse: collapse;
+    }
+
+    th {
+        text-align: left;
+        background: #94F07F;
+        padding: 5px;
+        border: 1px solid black;
+    }
+
+    td {
+        padding: 5px;
+        border: 1px solid black;
+    }
+</style>
+<div>
+<h1>Вы потеряли вашего питомца, не беспокойтесь, заполните данные и это сообщение увидят многие люди</h1>
+</div>
+<div>
+    @using (Html.BeginForm("Add_I_Have_Lost", "Main"))
+    {
+        <label>Введите описание награды </label><br />
+        <input type="text" name="adv" id="adv" />
+        <br />
+        <label>Введи информацию о потери</label><br />
+        <input type="text" name="support" id="support" />
+        <br />
+        <label>Добавьте фото по желанию(укажите путь к фото без двойных кавычек с двумя слэшами)</label><br/>
+        <br/>
+        <input type="text" name="foto" id="foto"><br />
+        <input type="submit" value="Отправить данные">
+
+    }
+</div>
+
+
+<div>
+    <table>
+        <thead>
+            <tr>
+              <th>Ваш ID</th>      <th>Ваша нагрда</th> <th>Ваше описание(информация об потери):</th> <th>Фото</th>
+            </tr>
+        </thead>
+        <tbody>
+          @{ 
+
+              if( ViewData["I_Have_Lost"] is null)
+              {
+
+              }
+              else
+              {
+                  IEnumerable < Furry_Community.Models.DataBase.I_have_lost >  spisok_I_Have_lost= (IEnumerable<Furry_Community.Models.DataBase.I_have_lost>)ViewData["I_Have_Lost"];
+                  foreach(Furry_Community.Models.DataBase.I_have_lost x in spisok_I_Have_lost)
+                  {
+                      <tr>
+                          <td>@x.ID_I_have_lost</td>     <td>@x.advertisment</td>    <td>@x.support</td>    
+                                                                                     <td>
+                                                                                         @{
+                                                                                             if (x.photo is null)
+                                                                                             {
+                                                                                                 <i>нет фото</i>
+                                                                                             }
+                                                                                             else
+                                                                                             {
+                                                                                                 var base64 = Convert.ToBase64String(x.photo);
+                                                                                                 var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                                                                                                 <img src="@imgSrc" style="width:190px;height:190px;">
+                                                                                             }
+
+                                                                                                             }
+                                                                                                         </td>
+                      </tr>
+                  }
+
+              }
+
+          }
+        </tbody>
+    </table>
+</div>
+
+
+<div>
+    <h2>Опция для удаления неактуальной записи</h2>
+    @using (Html.BeginForm("Delete_I_Found","Main"))
+    {
+        <label>Введите ID который  вы хотите удалить</label><br/>
+        <input type="number" name="id_num" id="id_num"><br />
+        <input type="submit" value="удалить "><br />
+    }
+</div>
+
+<div>
+    <h2>Опция для редактирования данных</h2>
+    <h4>Введите только те данные, которые хотите изменить</h4>
+    @using (Html.BeginForm("Update_I_Have_Lost", "Main"))
+    {
+        <label>Введите Id который будете редактировать</label><br />
+        <input type="number" id="id_red" name="id_red"><br/>
+        <label>Введите  новое описание награды </label><br />
+        <input type="text" name="nagr" id="nagr" />
+        <br />
+        <label>Введи новую информацию о потери</label><br />
+        <input type="text" name="infa" id="infa" />
+        <br />
+        <label>Путь к фото(c двумя слешами без кавычек)</label><br/>
+        <input type="text" name="foto" id="foto"><br/>
+        <input type="submit" value="Отправить данные">
+    }
+</div>

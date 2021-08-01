@@ -1,0 +1,20 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+#h1-profil {
+    color: #DC4C3F;
+    font-family: 'Lobster', cursive;
+}
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=Dela+Gothic+One&family=EB+Garamond:wght@700&family=Lobster&display=swap');
+#div-lyout2-niz {
+    font-family: 'Comfortaa', cursive;
+    font-family: 'Dela Gothic One', cursive;
+    font-family: 'EB Garamond', serif;
+    font-family: 'Lobster', cursive;
+}
+
+body {
+    background-color: #DFF0C6 !important;
+}
+
+input{
+    width:228px;
+}

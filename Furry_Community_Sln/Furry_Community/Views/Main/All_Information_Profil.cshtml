@@ -1,0 +1,88 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+<style type="text/css">
+    .profilText {
+        color: #4A4A4A;
+
+    }
+    /*
+    article {
+        max-width: 50%;
+        display: inline-block;
+        
+    }
+        */
+    .add-foto {
+        display: inline-block;
+        border: 5px dashed #98E378;
+        padding: 10px;
+        width: 100%;
+    }
+</style>
+
+@model Furry_Community.Models.DataBase.it_is_me
+
+
+<div id="ramka-profil-vsego">
+
+    <h1 id="h1-profil" style="text-align:center;">Это твой профиль</h1>
+    <section>
+        <article>
+    <div id="foto-profilya">
+        @{
+            if (@Model.Photo != null)
+            {
+
+
+                var base64 = Convert.ToBase64String(Model.Photo);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                <img src="@imgSrc" style="width:190px;height:190px;">
+            }
+        }
+    </div>
+            </article>
+        <br/>
+        <article>
+        <div class="profilText">
+            <label>Твое имя: </label>
+            <br />
+            <div class="textDannihIzBazyProfilya">
+                <p><b>@Model.First_name</b><br /></p>
+            </div>
+            <label>Фамилия:</label>
+            <br />
+            <div class="textDannihIzBazyProfilya">
+                <p><b>@Model.Second_name</b></p>
+            </div>
+            <label>Отчество</label>
+            <div class="textDannihIzBazyProfilya">
+                <p><b>@Model.Patronymic</b></p>
+            </div>
+
+            <table class="add-foto">
+                <tr><td>
+                    <h4>По желанию:</h4>
+                @using (Html.BeginForm("AddFoto", "Main"))
+                {
+                    <label>Добавить абсолютный путь к файлу картинки <br/>(что бы изменить фото профиля или добавить фото профилиля если еще нет) </label>
+                    <br />
+                    <br/>
+
+                    <label style="color:#FD3232;"><b><i>Не забудь удалить открывающие и закрывающие кавычки а также продублируй слэши</i></b></label><br/><br/>
+                    <input type="text" id="foto" name="foto" style="width:35%;"><br/>
+                    <input type="submit" value="подтвердить изменения фото">
+                    <br />
+                }
+                    </td></tr>
+            </table>
+      </div>
+            </article>
+        </section>
+</div>
+
+
+
+

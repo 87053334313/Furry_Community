@@ -1,0 +1,68 @@
+﻿@using Furry_Community.Models.DataBase;
+@{
+    ViewBag.Title = "ItIsMeAll";
+}
+
+<h2>ItIsMeAll</h2>
+@{
+    IEnumerable<it_is_me> zapr = (IEnumerable<it_is_me>)ViewBag.zapr1;
+    foreach (it_is_me me in zapr)
+    {
+        <p>@me.ID_I @me.First_name @me.Second_name @me.Patronymic @me.Parol </p>
+    }
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h2>Для удаления</h2>
+@using (Html.BeginForm("DeletePersonReal", "Main"))
+{
+    <label>Введите первичный ключ <b>ID</b> <br />Который хотите удалить</label>
+    <input type="number" name="id" id="id">
+    <input type="submit" value="Delete using primary key" />
+}
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h2>Для изменения существующих данных</h2>
+@using (Html.BeginForm("UpdateReal", "Main"))
+{
+    <label>Введите первичный ключ <b>ID</b> <br />Который хотите изменить</label>
+    <input type="number" name="id" id="id">
+    <br />
+    <label>А теперь введите данные которые хотите изменить</label>
+    <br />
+    <label>First Name:</label>
+    <input type="text" name="name" id="name">
+
+    <br />
+
+
+    <label>Second Name:</label>
+    <input type="text" name="second" id="second">
+
+    <br />
+
+    <label>Patronomyc</label>
+    <input type="text" name="pat" id="pat">
+
+    <br />
+
+    <label>Parol</label>
+    <input type="text" name="parol" id="parol">
+
+    <br />
+
+
+    <input type="submit" value="Изменить данные" />
+}
+
+

@@ -1,0 +1,139 @@
+﻿ 
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Furry_Community</title>
+    <link href="~/Content/StyleSheet_Main.css" rel="stylesheet" />
+    <link href="~/Content/Admin_Priuts.css" rel="stylesheet">
+
+   
+  
+    <style type="text/css">
+        .header {
+            width: 100%;
+            border: 20px;
+            background-color: #F7E4B8;
+            height: 113px;
+            border: 4px double black; /* Рамка вокруг таблицы */
+            border-collapse: collapse; /* Отображать только одинарные линии */
+        }
+
+        #lupa {
+            width: 113px;
+            height: 113px;
+        }
+
+        #list-main-niz {
+            list-style: none;
+            display: block;
+        }
+
+        #listVnizu {
+            list-style: none;
+            padding: 0px;
+            border: 1px solid #aaa;
+            background: #fff;
+            box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+            display: inline-block;
+            display: none;
+        }
+
+            #listVnizu a {
+                text-decoration: none;
+                padding: 10px 30px;
+                display: block;
+                color: #333;
+                text-shadow: none;
+                font-weight: 700;
+                display: block;
+                width: 400px;
+            }
+
+                #listVnizu a:hover {
+                    background: #A2A38D;
+                }
+
+
+
+
+
+            #listVnizu.active {
+                display: inline-block;
+            }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script charset="utf-8" src="./Content/JavaScript_Test.js" type="text/javascript">
+    </script>
+
+
+
+
+</head>
+<body style="background-color:#C3C8AD;">
+    <div>
+        <table class="header">
+            <tr>
+                <td width="90%"><a href="/Main/Novosti" style="text-decoration:none;"><div style="font-size:250%;"><p><b>Новости</b></p></div></a></td>
+                <td><a href="/Main/PoiskPoId"><img src="~/lupaa.gif" id="lupa" /></a></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <Main>
+            @RenderBody()
+        </Main>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="~/Content/JavaScript_Test.js"></script>
+    </div>
+    <div id="div-layout-list" style="padding-top:50px;">
+        <footer style="background-color:#F7B8B8;     border: 3px outset #6E7F80;">
+            <ul id="list-main-niz">
+                <li>
+                    <h1 data-trigger="dropdown" class="menuaction">Меню</h1>
+                    <ul id="listVnizu">
+                        <li>@Html.ActionLink("Вход для администратора", "Vhod_Admina", "Main")</li>
+                        <li>@Html.ActionLink("Регистрация", "Registration", "Main")</li>
+                        <li>@Html.ActionLink("Вход для зарегистрированных пользователей", "All_Information_Vvod", "Main")</li>
+                        <li>@Html.ActionLink("Потеряшки", "Poteruyashki_vse", "Main")</li>
+                        <li>@Html.ActionLink("Найденыши", "Naydenishi_vse", "Main")</li>
+                        <li>@Html.ActionLink("Инстркция для пользователей", "Index", "Main")</li>
+                    </ul>
+                </li>
+
+            </ul>
+        </footer>
+    </div>
+
+
+    <script>
+
+        $(document).ready(function () {
+
+
+
+            $("[data-trigger='dropdown']").on("mouseenter", function () {
+
+                var submenu = $(this).parent().find("#listVnizu");
+                submenu.addClass("active");
+                $("#list-main-niz").on("mouseleave", function () {
+
+                    submenu.removeClass("active");
+
+                })
+
+            })
+
+
+
+
+        })
+
+    </script>
+
+
+
+</body>
+</html>

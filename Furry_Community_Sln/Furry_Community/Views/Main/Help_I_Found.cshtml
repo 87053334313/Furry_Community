@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+@model Furry_Community.Models.DataBase.I_found
+
+
+    <div> 
+        <h1>Вы нашли потерявшуюся зверушку</h1>
+        <h3>Пожалуста заполните чтобы мы получили информацию</h3>
+        @Html.BeginForm("Data_Help_I_Found","Main"){ 
+        <label>Введите геолокацию, место  где вы нашли животное</label><br/>
+        <input type="text" name="geolocation" id="geolocation"><br/>
+        <label>Введите инофрмацию, которую считаете нужной передать</label>
+        <input type="text" name="information" id="information"><br/>
+        <label>Введите дату когда вы нашли питомца</label>
+        <input type="date" name="date_found" id="date_found">
+        <input type="submit" value="отправить">
+        }
+    </div>

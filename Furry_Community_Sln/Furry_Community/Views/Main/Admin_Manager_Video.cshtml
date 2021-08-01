@@ -1,0 +1,51 @@
+﻿ <div>
+
+     @{ 
+         if(ViewBag.zapros is null)
+         {
+
+         }
+         else
+         {
+             <table>
+                 <thead>
+                     <tr>
+                         <th>ID video что бы манипулировать данными</th> <th>ID человека</th> <th>Video</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     @foreach(Furry_Community.Models.DataBase.SsylkaNaVideo x in ViewBag.zapros)
+                     {
+                         string vsyaStroka = x.SsylkaNaYouTube;
+                         string _watch_v = "watch?v=";
+                         int dlina_watch = _watch_v.Length;
+                         int index_watch = vsyaStroka.IndexOf(_watch_v);
+                         int neddindex = index_watch + dlina_watch;
+                         string rez = vsyaStroka.Substring(neddindex);
+
+
+                         <tr>
+                             <td>@x.Id</td>  <td>@x.PersonId</td>   <td><iframe width="560" height="315" src="https://www.youtube.com/embed/@rez" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+                         </tr>
+                     }
+                 </tbody>
+             </table>
+         }
+     }
+
+ </div>
+
+
+<div>
+    <h1>Опция для удаления нарушающего условия пользования приложения видео</h1>
+    <label>Введи id video , которое хочешь удалить</label>
+    @using (Html.BeginForm("DelVideoAdmin", "Main"))
+    {
+
+
+    <input type="number" name="idToDel" id="idToDel">
+
+
+        <input type="submit" value="отправить">
+    }
+</div>

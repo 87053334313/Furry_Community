@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+@model Furry_Community.Models.DataBase.id_shelter
+
+<style>
+    TABLE {
+
+        border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    }
+    TD, TH {
+        padding: 3px; /* Поля вокруг содержимого таблицы */
+        border: 1px solid black; /* Параметры рамки */
+    }
+
+    TH {
+        background: #b0e0e6; /* Цвет фона */
+    }
+</style>
+
+    <div>
+        <h1>Доступные приюты</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Название приюта</th> <th>Адрес Приюта</th> <th>Телефон</th> <th>Какие принимаются животные</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (ViewData["spisokShelters"] is null)
+                    {
+
+                    }
+                    else
+                    {
+                        foreach (Furry_Community.Models.DataBase.id_shelter x in (IEnumerable<Furry_Community.Models.DataBase.id_shelter>)ViewData["spisokShelters"])
+                        {
+                            <tr>
+                                <td>@x.Name_of_shelter</td>  <td>@x.Address_of_shelter</td> <td>@x.Telephone</td> <td>@x.vid_animals</td>
+                            </tr>
+                        }
+
+                    }
+                }
+            </tbody>
+        </table>
+    </div>

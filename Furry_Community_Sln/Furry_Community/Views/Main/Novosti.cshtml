@@ -1,0 +1,33 @@
+﻿
+<div>
+    <h1>Видео загрженные пользователями:</h1>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <td>ID участника</td>
+            <td>Видео:</td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (Furry_Community.Models.DataBase.SsylkaNaVideo x in ViewBag.vsenovosti)
+            {
+                string vsyaStroka = x.SsylkaNaYouTube;
+                string _watch_v = "watch?v=";
+                int dlina_watch = _watch_v.Length;
+                int index_watch = vsyaStroka.IndexOf(_watch_v);
+                int neddindex = index_watch + dlina_watch;
+                string rez = vsyaStroka.Substring(neddindex);
+
+                <tr>
+                    <td>@x.PersonId</td>
+                    <td><iframe width="560" height="315" src="https://www.youtube.com/embed/@rez" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+        @using (Html.BeginForm("Zapolnenie_Pomoshi", "Main"))
+        {
+
+
+        <div>
+            <label>Введи какую помощь можешь предоставить:</label>
+            <input type="text" id="text_to_help" name="text_to_help">
+        </div>
+
+        <div>
+            <label>Введи какая помощь тебе нужна</label>
+            <input type="text" id="text_i_need_help" name="text_i_need_help">
+        </div>
+        <input type="submit" value="Подтвердить изменения">
+        }

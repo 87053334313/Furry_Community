@@ -1,0 +1,48 @@
+﻿
+<div>
+    <h1>Найденыши</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>Фото</td>
+                <td>Геолокация</td>
+                <td>Информация</td>
+                <td>Дата когда нашли</td>
+                <td>ID того кто нашел</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (Furry_Community.Models.DataBase.I_found x in (IEnumerable<Furry_Community.Models.DataBase.I_found>)ViewData["naydenishi"])
+                {
+                    <tr>
+                        <td>
+                            @{if (x.animal_photo is null)
+                                {
+                                    <i>нет фото</i>
+                                }
+                                else
+                                {
+                                    var base64 = Convert.ToBase64String(x.animal_photo);
+                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                                    <img src="@imgSrc" style="width:190px;height:190px;">
+                                }}
+                        </td>
+
+                        <td>@x.geolocation</td>
+                        <td>@x.information</td>
+                        <td>@x.date_found</td>
+                        <td>@x.ssylka_id</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+ 
+

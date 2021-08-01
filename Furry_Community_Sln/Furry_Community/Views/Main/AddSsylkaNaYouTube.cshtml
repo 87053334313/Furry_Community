@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+<div>
+    <h1>Вы можете по желанию добавить ссылку на YouTube</h1>
+    <h4>Это может быть как интересное ведео о домашних животных, так и ссылка из ютуба на на нашедшую зверушку</h4>
+</div>
+
+<div>
+    <h3>Опция для добавления видео:</h3>
+    @using (Html.BeginForm("AddVideoProfil","Main"))
+    {
+        <input type="text" name="ssylka" id="ssylka">
+        <input type="submit">
+    }
+</div>
+
+<div>
+    <h3>Все твои ссылки на видео:</h3>
+
+
+    @{
+    
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID твоего видео</th>
+                        <th>твоя ссылка</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (Furry_Community.Models.DataBase.SsylkaNaVideo x in ViewBag.YourVidosi)
+                    {
+                        <tr>
+                            <td>@x.Id</td>
+                            <td>@x.SsylkaNaYouTube</td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+
+    }
+
+</div>
+
+<div>
+    <h3>Опция для удалениния не нужной ссылки:</h3>
+    @using (Html.BeginForm("DeleteVideo", "Main"))
+    {
+        <label>Введите ID который хотите удалить</label>
+        <input type="number" id="delId" name="delId">
+        <input type="submit">
+    }
+</div>
+
