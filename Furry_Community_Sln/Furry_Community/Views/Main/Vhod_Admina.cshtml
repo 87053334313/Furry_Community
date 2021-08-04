@@ -1,9 +1,21 @@
 ﻿
-    <div class="menu_admina" style=" background: #DBD9DD;"> 
-        <ul>
-            <li>@Html.ActionLink("Все участники", "ItIsMeAll", "Main")</li>
-            <li>@Html.ActionLink("Добавить человека", "AddPerson", "Main")</li>
-            <li>@Html.ActionLink("Управление приютами", "Admin_Shelters", "Main")</li>
-            <li>@Html.ActionLink("Управление видое", "Admin_Manager_Video", "Main")</li>
-        </ul>
-    </div>
+<div>
+    @using (Html.BeginForm("VhodPoRolAdmina", "Main"))
+    {
+        <label>Введите роль администратора</label><br />
+        <input type="text" name="NameRolAdmin" id="NameRolAdmin"><br />
+        <label>Введите пароль для этого вида администратора</label><br />
+        <input type="password" name="ParolRolAdmin" id="ParolRolAdmin"><br />
+        <input type="submit" value="Войти">
+    }
+</div>
+@{ 
+
+    if (ViewBag.oshibka == "Вы ввели неправильные данные") 
+    {
+        <br/>
+        <h2>Вы ввели неправильные данные!</h2>
+        ViewBag.oshibka = null;
+    }
+
+    }

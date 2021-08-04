@@ -219,6 +219,8 @@
     <Content Include="Views\Main\Novosti.cshtml" />
     <Content Include="Views\Main\AddSsylkaNaYouTube.cshtml" />
     <Content Include="Views\Main\Admin_Manager_Video.cshtml" />
+    <Content Include="Views\Main\AminPriutStranitsa.cshtml" />
+    <Content Include="Views\Main\AminOhranaStranitsa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

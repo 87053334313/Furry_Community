@@ -155,9 +155,11 @@ namespace Furry_Community.Controllers
         {
             //try
             //{
-            if (db.it_is_me.Where(x => x.First_name == name && x.Parol == parol).Any())
+            if (db.it_is_me.Where(x => x.Parol == parol).Any() && db.how_to_contact_me.Where(x=>x.email==name).Any())
             {
-                var this_rez = db.it_is_me.Where(x => x.First_name == name && x.Parol == parol).FirstOrDefault();
+                var stroka_po_email = db.how_to_contact_me.Where(x => x.email == name).FirstOrDefault();
+                int id_po_email = stroka_po_email.ID_how_to_contact_me;
+                var this_rez = db.it_is_me.Where(x => x.Parol == parol && x.ID_how_to_contact_me==id_po_email).FirstOrDefault();
                 int this_id = this_rez.ID_I;
                 if (!db.all_information.Any(o => o.it_is_me == this_id))
                 {
@@ -597,6 +599,25 @@ public static int your_id;
                           select table;
             ViewBag.zapros = zaprose;
             return View("Admin_Manager_Video");
+        }
+
+        public ActionResult VhodPoRolAdmina(string NameRolAdmin, string ParolRolAdmin) 
+        {
+            if (NameRolAdmin == "priuts" && ParolRolAdmin == "parolpriuts")
+            {
+                ViewBag.oshibka = null;
+                return View("AminPriutStranitsa");
+            }
+            else if (NameRolAdmin == "ohrana" && ParolRolAdmin == "parolohrana")
+            {
+                ViewBag.oshibka = null;
+                return View("AminOhranaStranitsa");
+            }
+            else 
+            {
+                ViewBag.oshibka = "Вы ввели неправильные данные";
+                return View("Vhod_Admina");
+            }
         }
     }
 }
