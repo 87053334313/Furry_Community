@@ -1,0 +1,140 @@
+﻿@model Furry_Community.Models.VseZayavkiPapka.ZayavkiVseClass
+
+
+@{
+    List<int> vse_id = new List<int>();
+    foreach (Furry_Community.Models.DataBase.help x in Model.vse_help)
+    {
+        int this_id = x.ssylka_id.Value;
+        if (!(vse_id.Contains(this_id)))
+        {
+            vse_id.Add(x.ssylka_id.Value);
+        }
+
+    }
+
+}
+
+@{
+
+    foreach (int id_pol in vse_id)
+    {
+        <h3>Для id пользователя : @id_pol</h3>
+        Furry_Community.Models.DataBase.it_is_me me = Model.vse_it_is_me.Where(x => x.ID_I == id_pol).FirstOrDefault();
+        int id_tepephone = me.ID_how_to_contact_me;
+
+        <ul>
+            <li>
+                Имя: @Model.vse_it_is_me.Where(x => x.ID_I == id_pol).FirstOrDefault().First_name
+            </li>
+            <li>
+                Фамилия: @Model.vse_it_is_me.Where(x => x.ID_I == id_pol).FirstOrDefault().Second_name
+            </li>
+            <li>
+                Отчество: @Model.vse_it_is_me.Where(x => x.ID_I == id_pol).FirstOrDefault().Patronymic
+            </li>
+            <li>
+                Телефон: @Model.vse_how_to_contact_me.Where(x => x.ID_how_to_contact_me == id_tepephone).FirstOrDefault().tepelhone
+            </li>
+            <li>
+                email: @Model.vse_how_to_contact_me.Where(x => x.ID_how_to_contact_me == id_tepephone).FirstOrDefault().email
+            </li>
+            @{ if (!(Model.vse_it_is_me.Where(x => x.ID_I == id_pol).FirstOrDefault().Photo is null))
+                {
+
+                    var base64 = Convert.ToBase64String(Model.vse_it_is_me.Where(x => x.ID_I == id_pol).FirstOrDefault().Photo);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    <li>
+                        Фото:<br />
+                        <img src="@imgSrc" style="width:190px;height:190px;">
+                    </li>
+
+                }
+
+            }
+        </ul>
+
+
+
+
+
+        <table>
+            <thead>
+                <tr>
+                    <td>Id заявки</td>
+                    <td> Моя помощь текст</td>
+                    <td>Помощь в которой я нуждаюсь от приюта текст</td>
+                    <td>Id пользователя</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (Furry_Community.Models.DataBase.help x in Model.vse_help)
+                    {
+                        if (x.ssylka_id == id_pol)
+                        {
+                            Model.id_zayavki = x.ID_help;
+                            <tr>
+                                <td>@x.ID_help</td>
+                                <td>@x.How_can_i_help</td>
+                                <td>@x.What_help_do_I_need</td>
+                                <td>@x.ssylka_id</td>
+                            </tr>
+                        }
+
+                    }
+
+                }
+            </tbody>
+        </table>
+    }
+
+}
+
+<h1 style="color:red;">Наши ответы пользователям:</h1>
+<table>
+    <thead>
+        <tr>
+            <td>Id этого ответа</td>
+            <td>Id заявки</td>
+            <td>Наш ответ</td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (Furry_Community.Models.DataBase.response_from_the_manager x in Model.vse_response_ot_managera)
+            {
+                <tr>
+                    <td>@x.Id</td>
+                    <td>@x.Id_Zayavki</td>
+                    <td>@x.Stroka_otveta</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+
+
+<h3>Введите Id заявки на которую хотите ответить</h3>
+@using (Html.BeginForm("OtvetitPolzovatelyu", "Main"))
+{
+    <input type="number" id="id_zayavki" name="id_zayavki">
+    <br />
+    <input type="submit" value="Ответить">
+}
+
+<h3>Введите Id заявки, которую хотите удалить</h3>
+@using (Html.BeginForm("UdalitIdZayavki", "Main"))
+{
+    <input type="number" id="id_del_zayavka" name="id_del_zayavka">
+    <input type="submit" value="Удалить заявку">
+}
+
+<h3>Введите Id нашего ответа, который хотите удалить </h3>
+@using (Html.BeginForm("UdalitIdNashegoOtveta", "Main"))
+{
+    <input type="number" id="id_del_nashOtvet" name="id_del_nashOtvet">
+    <input type="submit" value="Удалить наш ответ">
+}

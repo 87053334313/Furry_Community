@@ -6,4 +6,16 @@
         <h1>Произошла ошибка</h1>
         <p>@ViewData["ex"]</p>
     </div>
- 
+    
+    <div>
+        @{ 
+            if (ViewBag.nettakoyzayavki is null)
+            {
+            }
+            else 
+            {
+                <h3>@ViewBag.nettakoyzayavki</h3>
+                ViewBag.nettakoyzayavki = null;
+            }
+        }
+    </div>

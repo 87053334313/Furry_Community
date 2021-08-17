@@ -1,0 +1,19 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+@{ 
+    if(ViewBag.StrokaOshibkiPriut is null)
+    {
+        <h3>Все успешно удалилось</h3>
+    }
+    else
+    {
+    <h3>@ViewBag.StrokaOshibkiPriut</h3>
+        ViewBag.Udalenie_ID_priut_zayavku = null;
+    }
+}
+<ul>
+    <li>@Html.ActionLink("Вернуться к вашим заявкам ", "Help_text", "Main")</li>
+</ul>

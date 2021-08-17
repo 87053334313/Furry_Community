@@ -1,0 +1,29 @@
+﻿@model Furry_Community.Models.VseOtvetyProsmotrPolz.ProsmotrOtveta 
+
+
+@{ 
+    if (Model is null)
+    {
+        <h3>Список на данный момент пуст</h3>
+    }
+    else
+    {
+        <table>
+            <thead>
+                <tr>
+                    <td>ID заявки</td>  <td>Ответ от менеджера по приютам</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{ 
+                    foreach (Furry_Community.Models.DataBase.response_from_the_manager x in Model.otvet) 
+                    {
+                        <tr>
+                            <td>@x.Id_Zayavki</td>   <td>@x.Stroka_otveta</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+ }

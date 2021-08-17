@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+<div>
+    <h1>Введи чем ты можешь помочь приютам в текстовое поле</h1><br/>
+
+    @using (Html.BeginForm("Otpravit_Svou_pomosh", "Main"))
+    {
+        <input type="text" name="MyHelp" id="MyHelp"><br/>
+        <input type="submit" value="Отправить">
+    }
+
+</div>

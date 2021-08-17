@@ -1,0 +1,12 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+<h3>Опишите помощь в которой вы нуждаетесь от приюта</h3>
+
+@using (Html.BeginForm("Pomosh_Ot_Priutiv", "Main"))
+{
+    <input type="text" id="pomosh_ot_priutov_text" name="pomosh_ot_priutov_text"><br/>
+    <input type="submit" value="Отправить заявку" />
+}

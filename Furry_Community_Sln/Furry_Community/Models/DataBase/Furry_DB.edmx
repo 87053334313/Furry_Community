@@ -102,6 +102,15 @@
           <Property Name="acheivements" Type="varchar" MaxLength="100" />
           <Property Name="id_role" Type="int" />
         </EntityType>
+        <EntityType Name="response_from_the_manager">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_polzovatelya" Type="int" />
+          <Property Name="Stroka_otveta" Type="varchar" MaxLength="500" />
+          <Property Name="Id_Zayavki" Type="int" />
+        </EntityType>
         <EntityType Name="role_love_of_animal">
           <Key>
             <PropertyRef Name="ID_role" />
@@ -259,6 +268,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="vitya_FurryModelStoreContainer">
           <EntitySet Name="all_information" EntityType="Self.all_information" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="help" EntityType="Self.help" Schema="dbo" store:Type="Tables" />
@@ -270,6 +310,7 @@
           <EntitySet Name="id_shelter" EntityType="Self.id_shelter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="it_is_me" EntityType="Self.it_is_me" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="reputation" EntityType="Self.reputation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="response_from_the_manager" EntityType="Self.response_from_the_manager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="role_love_of_animal" EntityType="Self.role_love_of_animal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SsylkaNaVideo" EntityType="Self.SsylkaNaVideo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -435,6 +476,15 @@
           <NavigationProperty Name="it_is_me" Relationship="Self.FK_reputation" FromRole="reputation" ToRole="it_is_me" />
           <NavigationProperty Name="role_love_of_animal" Relationship="Self.FK_role" FromRole="reputation" ToRole="role_love_of_animal" />
         </EntityType>
+        <EntityType Name="response_from_the_manager">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_polzovatelya" Type="Int32" />
+          <Property Name="Stroka_otveta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Zayavki" Type="Int32" />
+        </EntityType>
         <EntityType Name="role_love_of_animal">
           <Key>
             <PropertyRef Name="ID_role" />
@@ -593,7 +643,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="vitya_FurryEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="vitya_FurryEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="all_information" EntityType="Self.all_information" />
           <EntitySet Name="help" EntityType="Self.help" />
           <EntitySet Name="how_to_contact_me" EntityType="Self.how_to_contact_me" />
@@ -604,6 +654,7 @@
           <EntitySet Name="id_shelter" EntityType="Self.id_shelter" />
           <EntitySet Name="it_is_me" EntityType="Self.it_is_me" />
           <EntitySet Name="reputation" EntityType="Self.reputation" />
+          <EntitySet Name="response_from_the_manager" EntityType="Self.response_from_the_manager" />
           <EntitySet Name="role_love_of_animal" EntityType="Self.role_love_of_animal" />
           <EntitySet Name="SsylkaNaVideo" EntityType="Self.SsylkaNaVideo" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -647,13 +698,54 @@
             <End Role="role_love_of_animal" EntitySet="role_love_of_animal" />
             <End Role="reputation" EntitySet="reputation" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(vitya_FurryModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(vitya_FurryModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="vitya_FurryModelStoreContainer" CdmEntityContainer="vitya_FurryEntities1">
+        <EntityContainerMapping StorageEntityContainer="vitya_FurryModelStoreContainer" CdmEntityContainer="vitya_FurryEntities2">
           <EntitySetMapping Name="all_information">
             <EntityTypeMapping TypeName="vitya_FurryModel.all_information">
               <MappingFragment StoreEntitySet="all_information">
@@ -761,6 +853,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="response_from_the_manager">
+            <EntityTypeMapping TypeName="vitya_FurryModel.response_from_the_manager">
+              <MappingFragment StoreEntitySet="response_from_the_manager">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_polzovatelya" ColumnName="Id_polzovatelya" />
+                <ScalarProperty Name="Stroka_otveta" ColumnName="Stroka_otveta" />
+                <ScalarProperty Name="Id_Zayavki" ColumnName="Id_Zayavki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="role_love_of_animal">
             <EntityTypeMapping TypeName="vitya_FurryModel.role_love_of_animal">
               <MappingFragment StoreEntitySet="role_love_of_animal">
@@ -791,6 +893,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="vitya_FurryModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="vitya_FurryModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="vitya_FurryModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="vitya_FurryModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="vitya_FurryModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="vitya_FurryModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="vitya_FurryModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="vitya_FurryModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="vitya_FurryModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

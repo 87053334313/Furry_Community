@@ -170,7 +170,16 @@
     <Compile Include="Models\DataBase\reputation.cs">
       <DependentUpon>Furry_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataBase\response_from_the_manager.cs">
+      <DependentUpon>Furry_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataBase\role_love_of_animal.cs">
+      <DependentUpon>Furry_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBase\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Furry_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBase\sp_helpdiagrams_Result.cs">
       <DependentUpon>Furry_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\SsylkaNaVideo.cs">
@@ -180,6 +189,8 @@
       <DependentUpon>Furry_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoiskPoId\PoiskIDClass.cs" />
+    <Compile Include="Models\VseOtvetyProsmotrPolz\ProsmotrOtveta.cs" />
+    <Compile Include="Models\VseZayavkiPapka\ZayavkiVseClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +232,14 @@
     <Content Include="Views\Main\Admin_Manager_Video.cshtml" />
     <Content Include="Views\Main\AminPriutStranitsa.cshtml" />
     <Content Include="Views\Main\AminOhranaStranitsa.cshtml" />
+    <Content Include="Views\Main\Priuts_Help_Otdelno_Pozhertvovat.cshtml" />
+    <Content Include="Views\Main\Vi_Ne_Zapolnily_Tekstovoe_Pole.cshtml" />
+    <Content Include="Views\Main\Vasha_Zayavka_Uspeshna_Otpravlena.cshtml" />
+    <Content Include="Views\Main\Priuts_Help_Zaprosit_Pomosh_Ot_Priutov.cshtml" />
+    <Content Include="Views\Main\Udalenie_id_zayavka_priuta.cshtml" />
+    <Content Include="Views\Main\ZayavkiOtPolzovateleyKPriutam.cshtml" />
+    <Content Include="Views\Main\OtvetitPolzovatelyu.cshtml" />
+    <Content Include="Views\Main\ProsmotrOtvetaNaZayavki.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

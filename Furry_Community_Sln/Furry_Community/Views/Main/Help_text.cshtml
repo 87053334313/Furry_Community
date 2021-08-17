@@ -1,8 +1,26 @@
-﻿@model Furry_Community.Models.DataBase.help
+﻿ 
 
 @{
     Layout = "~/Views/Shared/_Layout_2.cshtml";
 }
+
+<style type="text/css">
+    TABLE {
+        width: 300px; /* Ширина таблицы */
+        border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    }
+
+    TD, TH {
+        padding: 3px; /* Поля вокруг содержимого таблицы */
+        border: 1px solid black; /* Параметры рамки */
+    }
+
+    TH {
+        background: #b0e0e6; /* Цвет фона */
+    }
+</style>
+
+
 
 
 @if (ViewData["newHelp"] != null)
@@ -11,20 +29,101 @@
 }
 
         <div>
-            <h2>Твои данные</h2>
-            <label>Как я могу помочь</label>
-    <p>@Model.How_can_i_help</p>
+            <h2>Твои заявки:</h2>
+            <h3>Как я могу помочь</h3>
+            <table>
+                <tr>
+                    <td>Id заявки</td>   <td>Текст как я могу помочь приютам</td>
+                </tr>
+                @{
+                    if (!(ViewBag.MyPriutHelp is null))
+                    {
+                        foreach (Furry_Community.Models.DataBase.help x in ViewBag.MyPriutHelp)
+                        {
+                            if (!String.IsNullOrEmpty(x.How_can_i_help))
+                            {
+                            <tr>
+                                <td>@x.ID_help</td>     <td>@x.How_can_i_help</td>
+                            </tr>
+                            }
+                        }
+                    }
+                 }
+            </table>
+
+        </div>
+
     <br />
     <br />
-    <label>
-        Что за помощь мне нужна:
-    </label>
-    <p>@Model.What_help_do_I_need</p>
-    </div>
+    
+
     <div>
-        @using (Html.BeginForm("Help_Text_Redact", "Main"))
+    <h3>
+        Что за помощь мне нужна:
+    </h3>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Id заявки</td>   <td>Текст помощи у приюта</td>
+            </tr>
+        </thead>
+        <tbody>
+        @{
+            if (!(ViewBag.MyPriutHelp is null))
+            {
+                foreach (Furry_Community.Models.DataBase.help x in ViewBag.MyPriutHelp)
+                {
+                    if (String.IsNullOrEmpty(x.How_can_i_help))
+                    {
+
+                        <tr>
+                        <td>@x.ID_help</td>
+                        <td>@x.What_help_do_I_need</td>
+                        </tr>
+
+                    }
+                }
+            }
+        }
+        </tbody>
+    </table>
+    </div>
+
+    
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <div>
+        <h2>Добавить заявление о помощи которую вы можете предоставить приютам</h2>
+        @using (Html.BeginForm("Priuts_Help_Otdelno_Pozhertvovat", "Main"))
         {
-            <label>Редактировать</label>
-            <input type="submit" value="редактировать">
+            <label>Для заполнения заявления кликните по кнопке</label>
+            <input type="submit" value="Чем я помгу помочь">
         }
     </div>
+    <br/>
+    <br/>
+    <div>
+        <h2>Добавить просьбу от приютов</h2>
+        @using (Html.BeginForm("Priuts_Help_Zaprosit_Pomosh_Ot_Priutov", "Main"))
+        {
+            <label>Перейти на страницу помощи, в которой я нуждаюсь от приютов</label>
+            <input type="submit" value="Какая помощь мне нужна">
+        }
+
+    </div>
+     
+
+
+    <br/>
+    <br/>
+    <br/>
+    <h3>Введите ID заявки, которую хотите удалить</h3>
+    @using (Html.BeginForm("DeleteIdZayavkiPriutPolzovatelem", "Main"))
+    {
+        <input type="number" id="delZayavPriut" name="delZayavPriut">
+        <input type="submit" value="удалить">
+    }

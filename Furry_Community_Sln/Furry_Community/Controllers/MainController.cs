@@ -9,6 +9,7 @@ using Furry_Community.Models.DataBase;
 using Furry_Community.Models.AddPerson;
 using Furry_Community.Models;
 using Furry_Community.Models.PoiskPoId;
+using Furry_Community.Models.VseZayavkiPapka;
 
 namespace Furry_Community.Controllers
 {
@@ -203,7 +204,7 @@ namespace Furry_Community.Controllers
         {
             return View();
         }
-public static int your_id;
+        public static int your_id;
         public ActionResult StartProfil_PoId()
         {
             int this_id = your_id;
@@ -214,15 +215,15 @@ public static int your_id;
         {
             if (!db.help.Where(x=>x.ssylka_id==your_id).Any())
             {
-                help new_help = new help() {How_can_i_help="Пока ничего", What_help_do_I_need="Пока ничего" ,ID_help=your_id,ssylka_id=your_id};
-                db.help.Add(new_help);
-                db.SaveChanges();
-                 
-                return View(new_help);
+                ViewBag.MyPriutHelp = null;
+                return View();
             }
-            help myhelpindex=db.help.Where(x => x.ssylka_id == your_id).FirstOrDefault();
+            IEnumerable<help> spisok_moih_pomoshey = from table in db.help
+                                                     where table.ssylka_id == your_id
+                                                     select table;
 
-            return View(myhelpindex);
+            ViewBag.MyPriutHelp = spisok_moih_pomoshey;
+            return View();
         }
 
 
@@ -619,5 +620,216 @@ public static int your_id;
                 return View("Vhod_Admina");
             }
         }
+
+        public ActionResult Priuts_Help_Otdelno_Pozhertvovat() 
+        {
+            return View();
+        }
+
+        public ActionResult Otpravit_Svou_pomosh( string MyHelp) 
+        {
+            if (String.IsNullOrEmpty(MyHelp)) 
+            {
+                return View("Vi_Ne_Zapolnily_Tekstovoe_Pole");
+            }
+            else
+            {
+                //your_id
+                help addNewHelp =new help() {How_can_i_help = MyHelp, ssylka_id = your_id };
+                db.help.Add(addNewHelp);
+                db.SaveChanges();
+                return View("Vasha_Zayavka_Uspeshna_Otpravlena");
+            }
+        }
+
+        public ActionResult Priuts_Help_Zaprosit_Pomosh_Ot_Priutov() 
+        {
+            return View();
+        }
+
+        public ActionResult Pomosh_Ot_Priutiv(string pomosh_ot_priutov_text) 
+        {
+            if (String.IsNullOrEmpty(pomosh_ot_priutov_text))
+            {
+                return View("Vi_Ne_Zapolnily_Tekstovoe_Pole");
+            }
+            else
+            {
+                //your_id
+                help addNewHelp = new help() { What_help_do_I_need = pomosh_ot_priutov_text, ssylka_id = your_id };
+                db.help.Add(addNewHelp);
+                db.SaveChanges();
+                return View("Vasha_Zayavka_Uspeshna_Otpravlena");
+            }
+        }
+
+        public ActionResult DeleteIdZayavkiPriutPolzovatelem(int delZayavPriut)
+        {
+            if (!(db.help.Where(x => x.ID_help == delZayavPriut && x.ssylka_id == your_id).Any()))
+            {
+                ViewBag.StrokaOshibkiPriut = "У вас нет такого id";
+                return View("Udalenie_id_zayavka_priuta");
+            }
+
+                help del_help = db.help.Where(x => x.ID_help == delZayavPriut && x.ssylka_id == your_id).FirstOrDefault();
+
+                    db.help.Remove(del_help);
+                    db.SaveChanges();
+                    ViewBag.Udalenie_ID_priut_zayavku = null;
+                    return View("Udalenie_id_zayavka_priuta");
+
+
+        }
+
+        public ActionResult ZayavkiOtPolzovateleyKPriutam()
+        {
+            ZayavkiVseClass vse_dannie_dluya_managera =new ZayavkiVseClass();
+            IEnumerable<help> spiok_vse_help = from table in db.help
+                                               select table;
+            IEnumerable<it_is_me> spisok_vse_it_is_me = from table in db.it_is_me
+                                                        select table;
+            IEnumerable<how_to_contact_me> spisok_vse_how_to_contact_me = from table in db.how_to_contact_me
+                                                                          select table;
+            vse_dannie_dluya_managera.vse_help = spiok_vse_help;
+            vse_dannie_dluya_managera.vse_how_to_contact_me = spisok_vse_how_to_contact_me;
+            vse_dannie_dluya_managera.vse_it_is_me = spisok_vse_it_is_me;
+
+            IEnumerable<response_from_the_manager> spisok_nashih_otvetov = from table in db.response_from_the_manager
+                                                                           select table;
+            vse_dannie_dluya_managera.vse_response_ot_managera = spisok_nashih_otvetov;
+
+            return View(vse_dannie_dluya_managera);
+        }
+
+        static int id_zayavki_otvet; 
+        public ActionResult OtvetitPolzovatelyu(int id_zayavki)
+        {
+            try
+            {
+                Furry_Community.Models.VseZayavkiPapka.ZayavkiVseClass new_class = new Furry_Community.Models.VseZayavkiPapka.ZayavkiVseClass();
+                new_class.id_zayavki = id_zayavki;
+                new_class.vse_help = from table in db.help
+                                     where table.ID_help == id_zayavki
+                                     select table;
+                int id_person = (from table in db.help
+                                 where table.ID_help == id_zayavki
+                                 select table.ssylka_id).FirstOrDefault().Value;
+                new_class.vse_it_is_me = from table in db.it_is_me
+                                         where table.ID_I == id_person
+                                         select table;
+                int id_how_to_contact_me = (from table in db.it_is_me
+                                            where table.ID_I == id_person
+                                            select table.ID_how_to_contact_me).FirstOrDefault();
+                new_class.vse_how_to_contact_me = from table in db.how_to_contact_me
+                                                  where table.ID_how_to_contact_me == id_how_to_contact_me
+                                                  select table;
+                id_zayavki_otvet = id_zayavki;
+
+                return View(new_class);
+            }
+            catch (Exception ex) 
+            {
+                ViewBag.nettakoyzayavki = "Вы ошиблись при вводе заявки, такой не существует, будьте внимательней";
+                return View("Oshibka");
+            }
+        }
+        
+         
+        
+ 
+        public ActionResult Otpravit_otvet_polzovatelu(string otvetPolzovatelu) 
+        {
+
+            int id_person = (from table in db.help
+                             where table.ID_help == id_zayavki_otvet
+                             select table.ssylka_id).FirstOrDefault().Value;
+
+            response_from_the_manager dobavit_otvet_v_bazu =new response_from_the_manager()
+            {
+                Id_polzovatelya = id_person,
+                Stroka_otveta = otvetPolzovatelu,
+                Id_Zayavki = id_zayavki_otvet
+            };
+            db.response_from_the_manager.Add(dobavit_otvet_v_bazu);
+            db.SaveChanges();
+            return View("VseUspeshno");
+        }
+
+        public ActionResult UdalitIdZayavki(int id_del_zayavka) 
+        {
+            help del_zayav = (from table in db.help
+                                               where table.ID_help == id_del_zayavka
+                                               select table).FirstOrDefault();
+
+            db.help.Remove(del_zayav);
+            db.SaveChanges();
+
+
+            /////
+            ZayavkiVseClass vse_dannie_dluya_managera = new ZayavkiVseClass();
+            IEnumerable<help> spiok_vse_help = from table in db.help
+                                               select table;
+            IEnumerable<it_is_me> spisok_vse_it_is_me = from table in db.it_is_me
+                                                        select table;
+            IEnumerable<how_to_contact_me> spisok_vse_how_to_contact_me = from table in db.how_to_contact_me
+                                                                          select table;
+            vse_dannie_dluya_managera.vse_help = spiok_vse_help;
+            vse_dannie_dluya_managera.vse_how_to_contact_me = spisok_vse_how_to_contact_me;
+            vse_dannie_dluya_managera.vse_it_is_me = spisok_vse_it_is_me;
+
+            IEnumerable<response_from_the_manager> spisok_nashih_otvetov = from table in db.response_from_the_manager
+                                                                           select table;
+            vse_dannie_dluya_managera.vse_response_ot_managera = spisok_nashih_otvetov;
+
+            return View("ZayavkiOtPolzovateleyKPriutam", vse_dannie_dluya_managera);
+
+        }
+
+
+
+        public ActionResult UdalitIdNashegoOtveta(int id_del_nashOtvet) 
+        {
+            response_from_the_manager otvet_del = (from table in db.response_from_the_manager
+                                                   where table.Id == id_del_nashOtvet
+                                                   select table).FirstOrDefault();
+            db.response_from_the_manager.Remove(otvet_del);
+            db.SaveChanges();
+            /////
+            ZayavkiVseClass vse_dannie_dluya_managera = new ZayavkiVseClass();
+            IEnumerable<help> spiok_vse_help = from table in db.help
+                                               select table;
+            IEnumerable<it_is_me> spisok_vse_it_is_me = from table in db.it_is_me
+                                                        select table;
+            IEnumerable<how_to_contact_me> spisok_vse_how_to_contact_me = from table in db.how_to_contact_me
+                                                                          select table;
+            vse_dannie_dluya_managera.vse_help = spiok_vse_help;
+            vse_dannie_dluya_managera.vse_how_to_contact_me = spisok_vse_how_to_contact_me;
+            vse_dannie_dluya_managera.vse_it_is_me = spisok_vse_it_is_me;
+
+            IEnumerable<response_from_the_manager> spisok_nashih_otvetov = from table in db.response_from_the_manager
+                                                                           select table;
+            vse_dannie_dluya_managera.vse_response_ot_managera = spisok_nashih_otvetov;
+
+            return View("ZayavkiOtPolzovateleyKPriutam", vse_dannie_dluya_managera);
+        }
+
+
+        public ActionResult ProsmotrOtvetaNaZayavki() 
+        {
+            IEnumerable<response_from_the_manager> otvet = from table in db.response_from_the_manager
+                                                           where table.Id_polzovatelya == your_id
+                                                           select table;
+            Furry_Community.Models.VseOtvetyProsmotrPolz.ProsmotrOtveta otv = new Furry_Community.Models.VseOtvetyProsmotrPolz.ProsmotrOtveta();
+            otv.otvet = otvet;
+
+            return View(otv);
+        }
+
+
+
+
+
     }
+
+
 }
