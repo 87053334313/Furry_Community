@@ -1,0 +1,42 @@
+﻿@model Furry_Community.Models.Patrul.PatrulReputation
+
+<h3>Список всех участников с замечаниями</h3>
+<table>
+    <thead>
+        <tr>
+            <td>Id строки</td>
+            <td>Id пользователя</td>
+            <td>Какое замечание:</td>
+        </tr>
+    </thead>
+        <tbody>
+            @{ 
+                foreach (Furry_Community.Models.DataBase.reputation_from_the_patrolman x in Model.table_bad_persons) 
+                {
+                    <tr>
+                         <td>@x.Id</td>   <td>@x.Id_polzovatelya</td>     <td>@x.Comment_of_remark</td>
+                    </tr>
+                }
+            }
+        </tbody>
+  
+</table>
+
+<br/>
+
+<h3>Добавить замечание для какого-нибудь пользователя</h3>
+@using (Html.BeginForm("Patrol_add_bad_id", "Main")) 
+{
+    <label>Введите Id пользователя,которому вы хотите добавить замечание</label><br/>
+    <input type="number" id="bad_id" name="bad_id"><br/>
+    <label>Введите само замечание:</label><br/>
+    <textarea name="str_zamech" id="str_zamech"></textarea>
+    <input type="submit" value="Добавить замечание">
+}
+<h3>Удалить запись по Id строки</h3>
+@using (Html.BeginForm("Del_stoka_zamechanie", "Main")) 
+{
+    <label>Введите Id строки, которую хотите удлаить</label><br/>
+    <input type="number" name="id_to_del" id="id_to_del">
+    <input type="submit" value="удалить строку">
+}

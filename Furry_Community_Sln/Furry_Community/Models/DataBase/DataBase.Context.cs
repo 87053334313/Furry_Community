@@ -18,7 +18,7 @@ namespace Furry_Community.Models.DataBase
     public partial class Furry_DB : DbContext
     {
         public Furry_DB()
-            : base("name=vitya_FurryEntities2")
+            : base("name=vitya_FurryEntities5")
         {
         }
     
@@ -37,6 +37,7 @@ namespace Furry_Community.Models.DataBase
         public virtual DbSet<id_shelter> id_shelter { get; set; }
         public virtual DbSet<it_is_me> it_is_me { get; set; }
         public virtual DbSet<reputation> reputation { get; set; }
+        public virtual DbSet<reputation_from_the_patrolman> reputation_from_the_patrolman { get; set; }
         public virtual DbSet<response_from_the_manager> response_from_the_manager { get; set; }
         public virtual DbSet<role_love_of_animal> role_love_of_animal { get; set; }
         public virtual DbSet<SsylkaNaVideo> SsylkaNaVideo { get; set; }

@@ -104,17 +104,17 @@
     <Content Include="Content\StyleSheet_Main.css" />
     <Content Include="Content\StyleSheet_Vnutreniy.css" />
     <Content Include="Global.asax" />
-    <Content Include="Models\DataBase\Furry_DB.Context.tt">
+    <Content Include="Models\DataBase\DataBase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Furry_DB.edmx</DependentUpon>
-      <LastGenOutput>Furry_DB.Context.cs</LastGenOutput>
+      <DependentUpon>DataBase.edmx</DependentUpon>
+      <LastGenOutput>DataBase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DataBase\DataBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataBase.edmx</DependentUpon>
+      <LastGenOutput>DataBase.cs</LastGenOutput>
     </Content>
     <Content Include="Models\DataBase\Furry_DB.edmx.sql" />
-    <Content Include="Models\DataBase\Furry_DB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Furry_DB.edmx</DependentUpon>
-      <LastGenOutput>Furry_DB.cs</LastGenOutput>
-    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -126,68 +126,72 @@
     </Compile>
     <Compile Include="Models\AddPerson\AddPerson.cs" />
     <Compile Include="Models\DataBase\all_information.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataBase\Furry_DB.Context.cs">
+    <Compile Include="Models\DataBase\DataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Furry_DB.Context.tt</DependentUpon>
+      <DependentUpon>DataBase.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataBase\Furry_DB.cs">
+    <Compile Include="Models\DataBase\DataBase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataBase\Furry_DB.Designer.cs">
+    <Compile Include="Models\DataBase\DataBase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Furry_DB.edmx</DependentUpon>
+      <DependentUpon>DataBase.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\help.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\how_to_contact_me.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\id_animal.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\id_shelter.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\it_is_me.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\I_found.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\I_have_lost.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\I_want_to_shelter_from_the_shelter.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\reputation.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBase\reputation_from_the_patrolman.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\response_from_the_manager.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\role_love_of_animal.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\SsylkaNaVideo.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataBase\sysdiagrams.cs">
-      <DependentUpon>Furry_DB.tt</DependentUpon>
+      <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Patrul\PatrulReputation.cs" />
     <Compile Include="Models\PoiskPoId\PoiskIDClass.cs" />
     <Compile Include="Models\VseOtvetyProsmotrPolz\ProsmotrOtveta.cs" />
     <Compile Include="Models\VseZayavkiPapka\ZayavkiVseClass.cs" />
@@ -195,12 +199,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\DataBase\Furry_DB.edmx">
+    <EntityDeploy Include="Models\DataBase\DataBase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Furry_DB.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataBase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DataBase\Furry_DB.edmx.diagram">
-      <DependentUpon>Furry_DB.edmx</DependentUpon>
+    <Content Include="Models\DataBase\DataBase.edmx.diagram">
+      <DependentUpon>DataBase.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\Main\Index.cshtml" />
@@ -240,6 +244,7 @@
     <Content Include="Views\Main\ZayavkiOtPolzovateleyKPriutam.cshtml" />
     <Content Include="Views\Main\OtvetitPolzovatelyu.cshtml" />
     <Content Include="Views\Main\ProsmotrOtvetaNaZayavki.cshtml" />
+    <Content Include="Views\Main\Patrol_manage_reputation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -249,7 +254,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

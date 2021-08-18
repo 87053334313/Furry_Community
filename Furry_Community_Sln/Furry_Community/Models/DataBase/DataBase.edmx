@@ -102,13 +102,21 @@
           <Property Name="acheivements" Type="varchar" MaxLength="100" />
           <Property Name="id_role" Type="int" />
         </EntityType>
+        <EntityType Name="reputation_from_the_patrolman">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_polzovatelya" Type="int" />
+          <Property Name="Comment_of_remark" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="response_from_the_manager">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_polzovatelya" Type="int" />
-          <Property Name="Stroka_otveta" Type="varchar" MaxLength="500" />
+          <Property Name="Stroka_otveta" Type="varchar" MaxLength="300" />
           <Property Name="Id_Zayavki" Type="int" />
         </EntityType>
         <EntityType Name="role_love_of_animal">
@@ -310,6 +318,7 @@
           <EntitySet Name="id_shelter" EntityType="Self.id_shelter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="it_is_me" EntityType="Self.it_is_me" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="reputation" EntityType="Self.reputation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reputation_from_the_patrolman" EntityType="Self.reputation_from_the_patrolman" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="response_from_the_manager" EntityType="Self.response_from_the_manager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="role_love_of_animal" EntityType="Self.role_love_of_animal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SsylkaNaVideo" EntityType="Self.SsylkaNaVideo" Schema="dbo" store:Type="Tables" />
@@ -476,13 +485,21 @@
           <NavigationProperty Name="it_is_me" Relationship="Self.FK_reputation" FromRole="reputation" ToRole="it_is_me" />
           <NavigationProperty Name="role_love_of_animal" Relationship="Self.FK_role" FromRole="reputation" ToRole="role_love_of_animal" />
         </EntityType>
+        <EntityType Name="reputation_from_the_patrolman">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_polzovatelya" Type="Int32" />
+          <Property Name="Comment_of_remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="response_from_the_manager">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id_polzovatelya" Type="Int32" />
-          <Property Name="Stroka_otveta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Stroka_otveta" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="Id_Zayavki" Type="Int32" />
         </EntityType>
         <EntityType Name="role_love_of_animal">
@@ -643,7 +660,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="vitya_FurryEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="vitya_FurryEntities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="all_information" EntityType="Self.all_information" />
           <EntitySet Name="help" EntityType="Self.help" />
           <EntitySet Name="how_to_contact_me" EntityType="Self.how_to_contact_me" />
@@ -654,6 +671,7 @@
           <EntitySet Name="id_shelter" EntityType="Self.id_shelter" />
           <EntitySet Name="it_is_me" EntityType="Self.it_is_me" />
           <EntitySet Name="reputation" EntityType="Self.reputation" />
+          <EntitySet Name="reputation_from_the_patrolman" EntityType="Self.reputation_from_the_patrolman" />
           <EntitySet Name="response_from_the_manager" EntityType="Self.response_from_the_manager" />
           <EntitySet Name="role_love_of_animal" EntityType="Self.role_love_of_animal" />
           <EntitySet Name="SsylkaNaVideo" EntityType="Self.SsylkaNaVideo" />
@@ -745,7 +763,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="vitya_FurryModelStoreContainer" CdmEntityContainer="vitya_FurryEntities2">
+        <EntityContainerMapping StorageEntityContainer="vitya_FurryModelStoreContainer" CdmEntityContainer="vitya_FurryEntities5">
           <EntitySetMapping Name="all_information">
             <EntityTypeMapping TypeName="vitya_FurryModel.all_information">
               <MappingFragment StoreEntitySet="all_information">
@@ -850,6 +868,15 @@
                 <ScalarProperty Name="ID_reputation" ColumnName="ID_reputation" />
                 <ScalarProperty Name="acheivements" ColumnName="acheivements" />
                 <ScalarProperty Name="id_role" ColumnName="id_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reputation_from_the_patrolman">
+            <EntityTypeMapping TypeName="vitya_FurryModel.reputation_from_the_patrolman">
+              <MappingFragment StoreEntitySet="reputation_from_the_patrolman">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_polzovatelya" ColumnName="Id_polzovatelya" />
+                <ScalarProperty Name="Comment_of_remark" ColumnName="Comment_of_remark" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

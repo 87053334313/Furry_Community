@@ -3,3 +3,14 @@
     <h1>Всё успешно обработалось!</h1>
     <p><i>@ViewData["uspex"]</i></p>
 </div>
+
+@{
+
+    if (ViewBag.FromPartol == 1)
+    {
+        <ul>
+        <li>@Html.ActionLink("Вернуться ко списку нарушителей", "Patrol_manage_reputation", "Main")</li>
+        </ul>
+    }
+
+}

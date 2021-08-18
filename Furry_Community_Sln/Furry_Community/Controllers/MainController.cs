@@ -10,6 +10,7 @@ using Furry_Community.Models.AddPerson;
 using Furry_Community.Models;
 using Furry_Community.Models.PoiskPoId;
 using Furry_Community.Models.VseZayavkiPapka;
+using Furry_Community.Models.Patrul;
 
 namespace Furry_Community.Controllers
 {
@@ -827,7 +828,34 @@ namespace Furry_Community.Controllers
 
 
 
+        public ActionResult Patrol_manage_reputation() 
+        {
+            IEnumerable<reputation_from_the_patrolman> vse_bad_pers = from table in db.reputation_from_the_patrolman
+                                                                      select table;
+            PatrulReputation class_patrol = new PatrulReputation();
+            class_patrol.table_bad_persons = vse_bad_pers;
+            return View(class_patrol);
+        }
 
+        public ActionResult Patrol_add_bad_id(string str_zamech, int bad_id) 
+        {
+           reputation_from_the_patrolman new_bad_guy =new reputation_from_the_patrolman();
+            new_bad_guy.Comment_of_remark = str_zamech;
+            new_bad_guy.Id_polzovatelya = bad_id;
+            db.reputation_from_the_patrolman.Add(new_bad_guy);
+            db.SaveChanges();
+            ViewBag.FromPartol = 1;
+            return View("VseUspeshno");
+        }
+
+        public ActionResult Del_stoka_zamechanie(int id_to_del) 
+        {
+            reputation_from_the_patrolman rep_ro_del = db.reputation_from_the_patrolman.Where(x => x.Id == id_to_del).FirstOrDefault();
+            db.reputation_from_the_patrolman.Remove(rep_ro_del);
+            db.SaveChanges();
+            ViewBag.FromPartol = 1;
+            return View("VseUspeshno");
+        }
 
     }
 
